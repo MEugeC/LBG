@@ -5,16 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LBG"
         mc:Ignorable="d"
-        Title="UI_GameOne" Height="300" Width="420.264">
-    <Grid RenderTransformOrigin="0.5,0.5">
-        <Grid.RenderTransform>
-            <TransformGroup>
-                <ScaleTransform/>
-                <SkewTransform/>
-                <RotateTransform Angle="-0.164"/>
-                <TranslateTransform/>
-            </TransformGroup>
-        </Grid.RenderTransform>
+        Title="UI_MainMenu" Height="485.022" Width="663.436">
+    <Grid>
+        <Image x:Name="image1" Stretch="UniformToFill" Source="juego1titulo.png" Height="105" HorizontalAlignment="Left" VerticalAlignment="Top" Width="353" RenderTransformOrigin="0.5,0.5" Margin="131,0,0,0" />
+        <Image x:Name="image2" Stretch="UniformToFill" Source="niño.png" Height="223" HorizontalAlignment="Left" VerticalAlignment="Top" Width="190" RenderTransformOrigin="0.5,0.5" Margin="207,110,0,0" />
 
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Click="Button_Click" Background="White" Margin="207,333,0,0" Height="121" Width="211" BorderBrush="{x:Null}" RenderTransformOrigin="0.607,0.507">
+            <StackPanel Orientation="Horizontal">
+                <Image x:Name="image3" Stretch="UniformToFill" Source="trespiezas.png" Height="99" HorizontalAlignment="Left" VerticalAlignment="Top" Width="198" />
+            </StackPanel>
+        </Button>
     </Grid>
 </Window>

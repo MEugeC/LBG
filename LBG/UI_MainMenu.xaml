@@ -13,14 +13,7 @@
         <Button VerticalAlignment="Top" HorizontalAlignment="Left" Click="Button_Click" Background="White" Height="203" Width="215" BorderBrush="{x:Null}" Margin="84,182,0,0">
             <StackPanel Orientation="Horizontal">
                 <Image x:Name="image2" Stretch="UniformToFill" Source="Juego1.png" Height="177" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" RenderTransformOrigin="0.5,0.5" >
-                    <Image.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="0.334"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Image.RenderTransform>
+                    
                 </Image>
             </StackPanel>
         </Button>
