@@ -23,5 +23,18 @@ namespace LBG
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            UI_GameOne game1 = new UI_GameOne();
+            game1.Show();
+
+            //MessageBox.Show("Bien Hecho");
+        }
+
+        private void Button_Click2(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show("VA AL SEGUNDO JUEGO");
+        }
     }
 }
