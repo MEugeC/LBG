@@ -139,22 +139,22 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="corazon-partido.jpg" />
+    <Resource Include="Img\corazon-partido.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="titulo.png" />
+    <Resource Include="Img\titulo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Juego1.png" />
-    <Resource Include="Juego2.png" />
+    <Resource Include="Img\Juego1.png" />
+    <Resource Include="Img\Juego2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="juego1titulo.png" />
-    <Resource Include="3piezas.png" />
-    <Resource Include="niño.png" />
+    <Resource Include="Img\juego1titulo.png" />
+    <Resource Include="Img\3piezas.png" />
+    <Resource Include="Img\niño.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="trespiezas.png" />
+    <Resource Include="Img\trespiezas.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
