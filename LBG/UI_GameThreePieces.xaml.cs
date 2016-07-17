@@ -24,7 +24,17 @@ namespace LBG
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btn_head(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_torso(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_legs(object sender, RoutedEventArgs e)
         {
 
         }

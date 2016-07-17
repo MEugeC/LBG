@@ -13,13 +13,13 @@
                 <Image x:Name="image1" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\mainTitle_gameOne.png" Height="201" HorizontalAlignment="Left" VerticalAlignment="Top" Width="950" RenderTransformOrigin="0.5,0.5" Margin="171,0,0,0" />
                 <Image x:Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body Parts\boy.png" Height="577" HorizontalAlignment="Left" VerticalAlignment="Top" Width="504" RenderTransformOrigin="0.5,0.5" Margin="403,166,0,0" />
 
-                <k:KinectTileButton Click="Button_Click" Foreground="{x:Null}" Margin="10,281,864,140" Height="Auto" Width="Auto" BorderBrush="{x:Null}">
+                <k:KinectTileButton Click="btn_threePieces" Foreground="{x:Null}" Margin="10,281,864,140" Height="Auto" Width="Auto" BorderBrush="{x:Null}">
                     <k:KinectTileButton.Background>
                         <ImageBrush ImageSource="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Buttons\btn_threePieces.png"></ImageBrush>
                     </k:KinectTileButton.Background>
                 </k:KinectTileButton>
 
-                <k:KinectTileButton Click="Button_Click" Foreground="{x:Null}" Margin="864,281,10,140" Height="Auto" Width="Auto" BorderBrush="{x:Null}">
+                <k:KinectTileButton Click="btn_sixPieces" Foreground="{x:Null}" Margin="864,281,10,140" Height="Auto" Width="Auto" BorderBrush="{x:Null}">
                     <k:KinectTileButton.Background>
                         <ImageBrush ImageSource="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Buttons\btn_sixPieces.png"></ImageBrush>
                     </k:KinectTileButton.Background>

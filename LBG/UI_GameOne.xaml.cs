@@ -76,7 +76,13 @@ namespace LBG
             ZonaCursor.KinectSensor = e.NewSensor; //ya tenemos el cursor
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btn_threePieces(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show("Bien Hecho");
+            Application.Current.Shutdown();
+        }
+
+        private void btn_sixPieces(object sender, RoutedEventArgs e)
         {
             //MessageBox.Show("Bien Hecho");
             Application.Current.Shutdown();
