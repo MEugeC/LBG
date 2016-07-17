@@ -78,14 +78,21 @@ namespace LBG
 
         private void btn_threePieces(object sender, RoutedEventArgs e)
         {
+            UI_GameThreePieces game3 = new UI_GameThreePieces();
+            game3.Show();
+            miKinect.Stop();
             //MessageBox.Show("Bien Hecho");
-            Application.Current.Shutdown();
+            this.Close();
         }
 
         private void btn_sixPieces(object sender, RoutedEventArgs e)
         {
+            UI_GameSixPieces game6 = new UI_GameSixPieces();
+            game6.Show();
+            miKinect.Stop();
             //MessageBox.Show("Bien Hecho");
-            Application.Current.Shutdown();
+            this.Close();
+
         }
     }
 }
