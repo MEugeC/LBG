@@ -3,42 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
 using Microsoft.Kinect;
 using Microsoft.Kinect.Toolkit;
+using Microsoft.Kinect.Toolkit.Controls;
 
 namespace LBG
 {
-    /// <summary>
-    /// Interaction logic for UI_MainMenu.xaml
-    /// </summary>
-    public partial class UI_MainMenu : Window
+    //[Export(typeof(KinectController))]
+    class KinectController
     {
-        static KinectSensorChooser miKinect;
-        //para ver si esta conectado, si se esta inicializando, etc... la tabla de todos los estados esta en la web
+        private readonly KinectSensorChooser miKinect = new KinectSensorChooser();
 
-
-        public UI_MainMenu()
+        private KinectController()
         {
-            InitializeComponent();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            miKinect = new KinectSensorChooser();
             miKinect.KinectChanged += miKinect_KinectChanged;
             //detecta si un kinect se conecta o esta desconectado, etc...
             // si lo desconectamos nos manda al evento
-            sensorChooserUI.KinectSensorChooser = miKinect;
-            miKinect.Start(); //inicializar el kinect
+            miKinect.Start(); //inicializar el kinect 
         }
 
         void miKinect_KinectChanged(object sender, KinectChangedEventArgs e)
@@ -87,40 +68,12 @@ namespace LBG
                 error = true;
             }
 
-            ZonaCursor.KinectSensor = e.NewSensor; //ya tenemos el cursor
+           // ZonaCursor.KinectSensor = e.NewSensor; //ya tenemos el cursor
         }
 
-        //private void StopKinect(KinectSensorChooser sensor)
-        //{
-        //    if (sensor != null)
-        //    {
-        //        if (sensor.IsRunning)
-        //        {
-        //            //stop sensor 
-        //            sensor.Stop();
-
-        //            //stop audio if not null
-        //            if (sensor.AudioSource != null)
-        //            {
-        //                sensor.AudioSource.Stop();
-        //            }
-        //        }
-        //    }
-        //}
-
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Cleanup()
         {
-            UI_GameOne game1 = new UI_GameOne();
-            game1.Show();
-            miKinect.Stop();
-            //MessageBox.Show("Bien Hecho");
-            this.Close();
-        }
-
-        private void Button_Click2(object sender, RoutedEventArgs e)
-        {
-            //MessageBox.Show("VA AL SEGUNDO JUEGO");
+            this.miKinect.Stop();
         }
     }
 }

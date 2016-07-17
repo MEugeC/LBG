@@ -1,19 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Microsoft.Kinect;
 using Microsoft.Kinect.Toolkit;
-
 
 namespace LBG
 {
@@ -37,7 +25,6 @@ namespace LBG
             // si lo desconectamos nos manda al evento
             sensorChooserUI.KinectSensorChooser = miKinect;
             miKinect.Start(); //inicializar el kinect
-
         }
 
         void miKinect_KinectChanged(object sender, KinectChangedEventArgs e)
@@ -86,10 +73,7 @@ namespace LBG
                 error = true;
             }
 
-            ZonaCursor.KinectSensor = e.NewSensor;
-            //ya tenemos el cursor
-
-
+            ZonaCursor.KinectSensor = e.NewSensor; //ya tenemos el cursor
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

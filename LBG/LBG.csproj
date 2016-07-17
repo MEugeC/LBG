@@ -80,6 +80,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="KinectController.cs" />
     <Compile Include="UI_GameOne.xaml.cs">
       <DependentUpon>UI_GameOne.xaml</DependentUpon>
     </Compile>
@@ -87,10 +88,24 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UI_GameSixPieces.xaml.cs">
+      <DependentUpon>UI_GameSixPieces.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI_GameThreePieces.xaml.cs">
+      <DependentUpon>UI_GameThreePieces.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI_MainMenu.xaml.cs">
       <DependentUpon>UI_MainMenu.xaml</DependentUpon>
     </Compile>
     <Page Include="UI_GameOne.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI_GameSixPieces.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI_GameThreePieces.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,22 +154,28 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Img\corazon-partido.jpg" />
+    <Resource Include="Images\Buttons\btn_gameOne.png" />
+    <Resource Include="Images\Buttons\btn_gameTwo.png" />
+    <Resource Include="Images\Buttons\btn_sixPieces.png" />
+    <Resource Include="Images\Buttons\btn_threePieces.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Img\titulo.png" />
+    <Resource Include="Images\Titles\mainTitle.png" />
+    <Resource Include="Images\Titles\mainTitle_gameOne.png" />
+    <Resource Include="Images\Titles\title_gameOne.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Img\Juego1.png" />
-    <Resource Include="Img\Juego2.png" />
+    <Resource Include="Images\Body_Parts\transparentBoy.png" />
+    <Resource Include="Images\Body_Parts\transparentHead.png" />
+    <Resource Include="Images\Body_Parts\transparentLeftHand.png" />
+    <Resource Include="Images\Body_Parts\transparentLeftLeg.png" />
+    <Resource Include="Images\Body_Parts\transparentRightHand.png" />
+    <Resource Include="Images\Body_Parts\transparentRightLeg.png" />
+    <Resource Include="Images\Body_Parts\transparentTorso.png" />
+    <Resource Include="Images\Body_Parts\transparentTorsoWithoutHands.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Img\juego1titulo.png" />
-    <Resource Include="Img\3piezas.png" />
-    <Resource Include="Img\niño.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Img\trespiezas.png" />
+    <Resource Include="Images\Body_Parts\transparentLegs.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
