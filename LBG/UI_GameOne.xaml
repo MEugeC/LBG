@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LBG"
         xmlns:k="http://schemas.microsoft.com/kinect/2013" 
         mc:Ignorable="d"
-        Title="UI_MainMenu" SizeToContent="WidthAndHeight" Height="783.815" Width="1311.128" Loaded="Window_Loaded">
+        Title="UI_GameOne" SizeToContent="WidthAndHeight" Height="783.815" Width="1311.128" Loaded="Window_Loaded">
     <Grid>
         <k:KinectRegion Name="ZonaCursor" Margin="0,-10,0,10">
             <Grid Margin="0,-10,0,10">
