@@ -24,8 +24,7 @@ namespace LBG
     {
         static KinectSensorChooser miKinect;
         //para ver si esta conectado, si se esta inicializando, etc... la tabla de todos los estados esta en la web
-
-
+        
         public UI_MainMenu()
         {
             InitializeComponent();
@@ -90,30 +89,11 @@ namespace LBG
             ZonaCursor.KinectSensor = e.NewSensor; //ya tenemos el cursor
         }
 
-        //private void StopKinect(KinectSensorChooser sensor)
-        //{
-        //    if (sensor != null)
-        //    {
-        //        if (sensor.IsRunning)
-        //        {
-        //            //stop sensor 
-        //            sensor.Stop();
-
-        //            //stop audio if not null
-        //            if (sensor.AudioSource != null)
-        //            {
-        //                sensor.AudioSource.Stop();
-        //            }
-        //        }
-        //    }
-        //}
-
-
         private void btn_gameOne(object sender, RoutedEventArgs e)
         {
+            miKinect.Stop();
             UI_GameOne game1 = new UI_GameOne();
             game1.Show();
-            miKinect.Stop();
             //MessageBox.Show("Bien Hecho");
             this.Close();
         }
