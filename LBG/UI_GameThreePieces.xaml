@@ -6,35 +6,29 @@
         xmlns:local="clr-namespace:LBG"
         xmlns:k="http://schemas.microsoft.com/kinect/2013" 
         mc:Ignorable="d"
-        Title="UI_GameThreePieces" SizeToContent="WidthAndHeight" Height="783.815" Width="1311.128" Loaded="Window_Loaded">
+        Title="UI_GameThreePieces" SizeToContent="WidthAndHeight" Height="784" Width="1312" Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
-        <k:KinectRegion Name="ZonaCursor" Margin="0,-10,0,0">
-            <Grid Margin="0,-10,0,10">
-                <Image x:Name="image1" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\title_gameOne.png" Height="201" HorizontalAlignment="Left" VerticalAlignment="Top" Width="950" RenderTransformOrigin="0.5,0.5" Margin="171,0,0,0" />
-                <Image x:Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoy.png" Height="627" HorizontalAlignment="Left" VerticalAlignment="Top" Width="475" RenderTransformOrigin="0.5,0.5" Margin="411,136,0,0" />
 
-                <k:KinectTileButton Click="btn_back" Foreground="{x:Null}" Margin="28,59,1154,592" Height="Auto" Width="Auto" BorderBrush="{x:Null}">
-                    <k:KinectTileButton.Background>
-                        <ImageBrush ImageSource="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\back_icon.png"></ImageBrush>
-                    </k:KinectTileButton.Background>
-                </k:KinectTileButton>
-                
-                <k:KinectTileButton Click="btn_head" Foreground="{x:Null}" Margin="915,368,62,71" Height="Auto" Width="Auto" BorderBrush="{x:Null}">
-                    <k:KinectTileButton.Background>
-                        <ImageBrush ImageSource="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png"></ImageBrush>
-                    </k:KinectTileButton.Background>
+        <k:KinectRegion Name="ZonaCursor" Margin="10,-10,-10,0">
+            <Grid Margin="0,0,0,10">
+                <Image x:Name="image1" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\title_gameOne.png" Height="201" HorizontalAlignment="Left" VerticalAlignment="Top" Width="950" Margin="186,0,0,0" />
+                <Image x:Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoy.png" HorizontalAlignment="Left" Width="390" Margin="450,146,0,0" Height="513" VerticalAlignment="Top" />
+
+                <k:KinectTileButton Click="btn_back" Foreground="{x:Null}" Margin="38,46,1157,587" BorderBrush="{x:Null}" Height="Auto" Width="Auto" Background="{x:Null}" LabelBackground="{x:Null}">
+                    <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\back.png" Height="109" Width="109" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </k:KinectTileButton>
 
-                <k:KinectTileButton Click="btn_torso" Foreground="{x:Null}" Margin="10,421,801,10" Height="Auto" Width="Auto" BorderBrush="{x:Null}">
-                    <k:KinectTileButton.Background>
-                        <ImageBrush ImageSource="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentTorso.png"></ImageBrush>
-                    </k:KinectTileButton.Background>
+                <k:KinectTileButton Click="btn_head" Foreground="{x:Null}" Margin="939,266,85,189" Height="Auto" Width="Auto" BorderBrush="{x:Null}" Background="{x:Null}" LabelBackground="{x:Null}">
+                    <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png" Height="268" Width="271" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </k:KinectTileButton>
 
-                <k:KinectTileButton Click="btn_legs" Foreground="{x:Null}" Margin="38,201,919,406" Height="Auto" Width="Auto" BorderBrush="{x:Null}">
-                    <k:KinectTileButton.Background>
-                        <ImageBrush ImageSource="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLegs.png"></ImageBrush>
-                    </k:KinectTileButton.Background>
+                <k:KinectTileButton Click="btn_torso" Foreground="{x:Null}" Margin="26,422,859,41" Height="Auto" Width="Auto" BorderBrush="{x:Null}" Background="{x:Null}" LabelBackground="{x:Null}">
+                    <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentTorso.png" Height="260" Width="405" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </k:KinectTileButton>
+
+                <k:KinectTileButton Click="btn_legs" Foreground="{x:Null}" Margin="61,206,923,380" Height="Auto" Width="Auto" BorderBrush="{x:Null}" Background="{x:Null}" LabelBackground="{x:Null}">
+                    <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLegs.png" Height="126" Width="284" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </k:KinectTileButton>
 
             </Grid>
