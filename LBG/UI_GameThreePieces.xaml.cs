@@ -2,7 +2,10 @@
 using System.Windows;
 using Microsoft.Kinect;
 using Microsoft.Kinect.Toolkit;
-
+using System.Linq;
+using Coding4Fun.Kinect;
+using Coding4Fun.Kinect.Wpf;
+using System.Threading;
 
 namespace LBG
 {
@@ -16,6 +19,9 @@ namespace LBG
         int accumulator = 0;
         Posture postureInDetection = Posture.None;
         Posture previousPosture = Posture.None;
+        bool closing = false;
+        const int skeletonCount = 6;
+        Skeleton[] allSkeletons = new Skeleton[skeletonCount];
 
         [Serializable]
         public struct Vector3
@@ -25,12 +31,33 @@ namespace LBG
             public float Z;
         }
 
-
         public enum Posture
         {
             None,
-            HandOnHead
+            HandOnHead,
+            HandOnSpine,
+            HandOnLeg
         }
+
+        Vector3 head,
+                handRight,
+                handLeft,
+                wristRight,
+                wristLeft,
+                elbowRight,
+                elbowLeft,
+                shoulderRight,
+                shoulderLeft,
+                spine,
+                hip,
+                hipRight,
+                hipLeft,
+                kneeRight,
+                kneeLeft,
+                ankleRight,
+                ankleLeft,
+                footRight,
+                footLeft;
 
         public UI_GameThreePieces()
         {
@@ -90,32 +117,85 @@ namespace LBG
             ZonaCursor.KinectSensor = e.NewSensor; //ya tenemos el cursor
         }
 
-        void kinect_SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
+        void kinect_SkeletonFrameReady(object sender, AllFramesReadyEventArgs e)
         {
-            foreach (SkeletonData skeleton in e.SkeletonFrame.Skeletons)
-                if (skeleton.TrackingState == SkeletonTrackingState.Tracked)
+            if (closing)
+            {
+                return;
+            }
+            else
+            {  
+                //Get a skeleton
+                Skeleton skeleton = GetFirstSkeleton(e);
+
+                if (skeleton == null)
                 {
-                    Vector3 handRight = new Vector3();
-                    handRight.X = skeleton.Joints[JointType.HandRight].Position.X;
-                    handRight.Y = skeleton.Joints[JointType.HandRight].Position.Y;
-                    handRight.Z = skeleton.Joints[JointType.HandRight].Position.Z;
-
-                    Vector3 handLeft = new Vector3();
-                    handLeft.X = skeleton.Joints[JointType.HandLeft].Position.X;
-                    handLeft.Y = skeleton.Joints[JointType.HandLeft].Position.Y;
-                    handLeft.Z = skeleton.Joints[JointType.HandLeft].Position.Z;
-
-                    Vector3 head = new Vector3();
-                    head.X = skeleton.Joints[JointType.Head].Position.X;
-                    head.Y = skeleton.Joints[JointType.Head].Position.Y;
-                    head.Z = skeleton.Joints[JointType.Head].Position.Z;
+                    return;
                 }
+                else if (skeleton.TrackingState == SkeletonTrackingState.Tracked)
+                {
+                    head = getVector(skeleton, JointType.Head);
+
+                    handRight = getVector(skeleton, JointType.HandRight);
+                    handLeft = getVector(skeleton, JointType.HandLeft);
+
+                    wristRight = getVector(skeleton, JointType.WristRight);
+                    wristLeft = getVector(skeleton, JointType.WristLeft);
+
+                    elbowRight = getVector(skeleton, JointType.ElbowRight);
+                    elbowLeft = getVector(skeleton, JointType.ElbowLeft);
+
+                    shoulderRight = getVector(skeleton, JointType.ShoulderRight);
+                    shoulderLeft = getVector(skeleton, JointType.ShoulderLeft);
+
+                    spine = getVector(skeleton, JointType.Head);
+                    hip = getVector(skeleton, JointType.Head);
+
+                    hipRight = getVector(skeleton, JointType.HipRight);
+                    hipLeft = getVector(skeleton, JointType.HipLeft);
+
+                    kneeRight = getVector(skeleton, JointType.KneeRight);
+                    kneeLeft = getVector(skeleton, JointType.KneeLeft);
+
+                    ankleRight = getVector(skeleton, JointType.AnkleRight);
+                    ankleLeft = getVector(skeleton, JointType.AnkleLeft);
+
+                    footRight = getVector(skeleton, JointType.FootRight);
+                    footLeft = getVector(skeleton, JointType.FootLeft);
+                }
+            }
+            
         }
 
-
-        bool HandOnHead(Vector3 hand, Vector3 head)
+        Vector3 getVector (Skeleton skeleton, JointType jointType)
         {
-            float distance = (hand.X - head.X) - (hand.Y - head.Y) - (hand.Z - head.Z);
+            Vector3 vector3 = new Vector3();
+            vector3.X = skeleton.Joints[jointType].Position.X;
+            vector3.Y = skeleton.Joints[jointType].Position.Y;
+            vector3.Z = skeleton.Joints[jointType].Position.Z;
+
+            return vector3;
+        }
+
+        Skeleton GetFirstSkeleton(AllFramesReadyEventArgs e)
+        {
+            using (SkeletonFrame skeletonFrameData = e.OpenSkeletonFrame())
+            {
+                if (skeletonFrameData == null)
+                {
+                    return null;
+                }
+                skeletonFrameData.CopySkeletonDataTo(allSkeletons);
+                Skeleton first = (from s in allSkeletons where s.TrackingState == SkeletonTrackingState.Tracked select s).FirstOrDefault();
+                return first;
+            }
+        }
+
+        bool getDistance(Vector3 vectorOne, Vector3 vectorTwo)
+        {
+            float distance = (vectorOne.X - vectorTwo.X) * 
+                             (vectorOne.Y - vectorTwo.Y) * 
+                             (vectorOne.Z - vectorTwo.Z);
             if (Math.Abs(distance) > 0.05f)
                 return false;
             else
@@ -146,32 +226,101 @@ namespace LBG
             return false;
         }
 
+        bool handOnHead()
+        {
+            return getDistance(handRight, head) ||
+                   getDistance(handLeft, head);
+        }
+
+        bool handOnSpine()
+        {
+            return getDistance(handRight, handLeft) ||
+                   getDistance(handRight, wristRight) ||
+                   getDistance(handRight, wristLeft) ||
+                   getDistance(handRight, elbowRight) ||
+                   getDistance(handRight, elbowLeft) ||
+                   getDistance(handRight, shoulderRight) ||
+                   getDistance(handRight, shoulderRight) ||
+                   getDistance(handRight, shoulderRight) ||
+                   getDistance(handRight, spine) ||
+                   getDistance(handRight, hip);
+        }
+
+        bool handOnLegs()
+        {
+            return getDistance(handRight, hipRight) ||
+                   getDistance(handRight, hipLeft) ||
+                   getDistance(handRight, kneeRight) ||
+                   getDistance(handRight, kneeLeft) ||
+                   getDistance(handRight, ankleRight) ||
+                   getDistance(handRight, ankleLeft) ||
+                   getDistance(handRight, footRight) ||
+                   getDistance(handRight, footLeft);
+        }
+
         private void btn_head(object sender, RoutedEventArgs e)
         {
-           MessageBox.Show("CABEZA");
+            //MessageBox.Show("CABEZA");
+            Thread.Sleep(5000);
 
-            if (HandOnHead(handRight, head))
+            if (handOnHead())
             {
                 if (PostureDetector(Posture.HandOnHead))
                 {
-                    //
+                    MessageBox.Show("BIEN");
+                }
+                else
+                {
+                    MessageBox.Show("MAL");
                 }
             }
             else if (PostureDetector(Posture.None))
             {
-                //
+                MessageBox.Show("MAL");
             }
         }
     
-
         private void btn_torso(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("TORSO Y BRAZOS");
+
+            if (handOnSpine())
+            {
+                if (PostureDetector(Posture.HandOnSpine))
+                {
+                    MessageBox.Show("BIEN");
+                }
+                else
+                {
+                    MessageBox.Show("MAL");
+                }
+            }
+            else if (PostureDetector(Posture.None))
+            {
+                MessageBox.Show("MAL");
+            }
         }
 
         private void btn_legs(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("PIERNAS");
+
+            if (handOnLegs())
+            {
+                if (PostureDetector(Posture.HandOnSpine))
+                {
+                    MessageBox.Show("BIEN");
+                }
+                else
+                {
+                    MessageBox.Show("MAL");
+                }
+            }
+            else if (PostureDetector(Posture.None))
+            {
+                MessageBox.Show("MAL");
+            }
+
         }
 
         private void btn_back(object sender, RoutedEventArgs e)
@@ -179,7 +328,6 @@ namespace LBG
             miKinect.Stop();
             UI_GameOne game1 = new UI_GameOne();
             game1.Show();
-            //MessageBox.Show("Bien Hecho");
             this.Close();
         }
     }
