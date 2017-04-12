@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 using Microsoft.Kinect;
 using Microsoft.Kinect.Toolkit;
@@ -32,18 +21,21 @@ namespace LBG
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //MessageBox.Show("Window_Loaded 1");
             miKinect = new KinectSensorChooser();
             miKinect.KinectChanged += miKinect_KinectChanged;
+            //MessageBox.Show("Window_Loaded 2");
             //detecta si un kinect se conecta o esta desconectado, etc...
             // si lo desconectamos nos manda al evento
             sensorChooserUI.KinectSensorChooser = miKinect;
+            //MessageBox.Show("Window_Loaded 3");
             miKinect.Start(); //inicializar el kinect
         }
 
         void miKinect_KinectChanged(object sender, KinectChangedEventArgs e)
         {
+            //MessageBox.Show("miKinect_KinectChanged");
             bool error = true; //verificar si existe algun error
-
             if (e.OldSensor == null) //esto va de KinectChangedEventArgs, si es null es que lo desconcectamos
             {
                 try
@@ -86,7 +78,8 @@ namespace LBG
                 error = true;
             }
 
-            ZonaCursor.KinectSensor = e.NewSensor; //ya tenemos el cursor
+            ZonaCursor.KinectSensor = e.NewSensor;
+            //MessageBox.Show("FIN"kkk);//ya tenemos el cursor
         }
 
         private void btn_gameOne(object sender, RoutedEventArgs e)

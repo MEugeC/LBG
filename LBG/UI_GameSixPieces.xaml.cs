@@ -41,7 +41,6 @@ namespace LBG
 
         void miKinect_KinectChanged(object sender, KinectChangedEventArgs e)
         {
-            bool error = true; //verificar si existe algun error
 
             if (e.OldSensor == null) //esto va de KinectChangedEventArgs, si es null es que lo desconcectamos
             {
@@ -52,7 +51,6 @@ namespace LBG
                 }
                 catch (Exception)
                 {
-                    error = true;
                 }
             }
 
@@ -82,11 +80,11 @@ namespace LBG
             }
             catch (InvalidOperationException)
             {
-                error = true;
             }
 
             ZonaCursor.KinectSensor = e.NewSensor; //ya tenemos el cursor
         }
+
         private void btn_head(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("CABEZA");

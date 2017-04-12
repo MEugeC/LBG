@@ -8,32 +8,30 @@
         mc:Ignorable="d"
         Title="UI_GameThreePieces" SizeToContent="WidthAndHeight" Height="784" Width="1312" Loaded="Window_Loaded"
         WindowStartupLocation="CenterScreen" WindowState="Maximized">
-    <Grid>
+    <!--<Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="48*"/>
+            <ColumnDefinition Width="115*"/>
+        </Grid.ColumnDefinitions>-->
+    <!--<k:KinectRegion Name="ZonaCursor" Margin="10,-10,-10,0" Grid.ColumnSpan="2">-->
+    <Canvas Name="MainWindow">
+        <Image x:Name="image1" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\title_gameOne.png" Height="201" HorizontalAlignment="Left" VerticalAlignment="Top" Width="950" Margin="186,0,0,0" />
+        <Image x:Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoyWhite.png" HorizontalAlignment="Left" Width="390" Margin="450,146,0,0" Height="513" VerticalAlignment="Top" />
 
-        <k:KinectRegion Name="ZonaCursor" Margin="10,-10,-10,0">
-            <Grid Margin="0,0,0,10">
-                <Image x:Name="image1" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\title_gameOne.png" Height="201" HorizontalAlignment="Left" VerticalAlignment="Top" Width="950" Margin="186,0,0,0" />
-                <Image x:Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoyWhite.png" HorizontalAlignment="Left" Width="390" Margin="450,146,0,0" Height="513" VerticalAlignment="Top" />
+        <k:KinectTileButton Click="btn_back" Foreground="{x:Null}" BorderBrush="{x:Null}" Height="109" Width="109" Background="{x:Null}" LabelBackground="{x:Null}">
+            <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\back.png" Height="109" Width="109" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </k:KinectTileButton>
 
-                <k:KinectTileButton Click="btn_back" Foreground="{x:Null}" Margin="38,46,1157,587" BorderBrush="{x:Null}" Height="Auto" Width="Auto" Background="{x:Null}" LabelBackground="{x:Null}">
-                    <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\back.png" Height="109" Width="109" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </k:KinectTileButton>
+        <Image Name="imageHead" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png"  Margin="939,266,85,189" Height="268" Width="271" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Name="labelHead" TextElement.FontSize="20" Content="Mano en la cabeza" Visibility="Hidden" Canvas.Left="999" Canvas.Top="592" />
+        <Label Name="labelResult" TextElement.FontSize="20" Content="BIEN" Visibility="Hidden" Canvas.Left="999" Canvas.Top="668" />
+        <Ellipse Canvas.Left="617" Canvas.Top="34" Height="45" Name="ellipseHead" Stroke="Black" Width="45" Fill="#000000" />
+        <Image Name="ellipseHandLeft"   Canvas.Left="567" Canvas.Top="10" Height="50"  Width="50" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\handLeft.png"/>
+        <Image Name="ellipseHandRight" Canvas.Left="662" Canvas.Top="10" Height="50" Width="50" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\handRight.png"/>
+        <k:KinectSensorChooserUI Name="sensorChooserUI" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1" Margin="240,0,651,0"></k:KinectSensorChooserUI>
 
-                <k:KinectTileButton Click="btn_head" Foreground="{x:Null}" Margin="939,266,85,189" Height="Auto" Width="Auto" BorderBrush="{x:Null}" Background="{x:Null}" LabelBackground="{x:Null}">
-                    <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png" Height="268" Width="271" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </k:KinectTileButton>
+    </Canvas>
+    <!--</k:KinectRegion>-->
 
-                <k:KinectTileButton Click="btn_torso" Foreground="{x:Null}" Margin="26,422,859,41" Height="Auto" Width="Auto" BorderBrush="{x:Null}" Background="{x:Null}" LabelBackground="{x:Null}">
-                    <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentTorso.png" Height="260" Width="405" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </k:KinectTileButton>
-
-                <k:KinectTileButton Click="btn_legs" Foreground="{x:Null}" Margin="61,206,923,380" Height="Auto" Width="Auto" BorderBrush="{x:Null}" Background="{x:Null}" LabelBackground="{x:Null}">
-                    <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLegs.png" Height="126" Width="284" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </k:KinectTileButton>
-
-            </Grid>
-        </k:KinectRegion>
-        <k:KinectSensorChooserUI Name="sensorChooserUI" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1" Margin="624,0,651,0"></k:KinectSensorChooserUI>
-
-    </Grid>
+    <!--</Grid>-->
 </Window>

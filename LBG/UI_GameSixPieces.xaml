@@ -12,7 +12,7 @@
         <k:KinectRegion Name="ZonaCursor" Margin="10,-10,-10,0">
             <Grid Margin="0,-10,0,10">
                 <Image x:Name="image1" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\title_gameOne.png" Height="201" HorizontalAlignment="Left" VerticalAlignment="Top" Width="950" Margin="186,0,0,0" />
-                <Image x:Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoy.png" HorizontalAlignment="Left" Width="390" Margin="450,146,0,0" Height="513" VerticalAlignment="Top" />
+                <Image x:Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoyWhiteSix.png" HorizontalAlignment="Left" Width="390" Margin="450,146,0,0" Height="513" VerticalAlignment="Top" />
 
                 <k:KinectTileButton Click="btn_back" Foreground="{x:Null}" Margin="38,46,1157,587" BorderBrush="{x:Null}" Height="Auto" Width="Auto" Background="{x:Null}" LabelBackground="{x:Null}">
                     <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\back.png" Height="109" Width="109" HorizontalAlignment="Center" VerticalAlignment="Center"/>
