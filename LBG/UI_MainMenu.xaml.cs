@@ -21,14 +21,14 @@ namespace LBG
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show("Window_Loaded 1");
+            MainGrid.Height = System.Windows.SystemParameters.PrimaryScreenHeight;
+            MainGrid.Width = System.Windows.SystemParameters.PrimaryScreenWidth;
+
             miKinect = new KinectSensorChooser();
             miKinect.KinectChanged += miKinect_KinectChanged;
-            //MessageBox.Show("Window_Loaded 2");
             //detecta si un kinect se conecta o esta desconectado, etc...
             // si lo desconectamos nos manda al evento
             sensorChooserUI.KinectSensorChooser = miKinect;
-            //MessageBox.Show("Window_Loaded 3");
             miKinect.Start(); //inicializar el kinect
         }
 

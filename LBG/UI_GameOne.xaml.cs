@@ -19,6 +19,9 @@ namespace LBG
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            MainGrid.Height = System.Windows.SystemParameters.PrimaryScreenHeight;
+            MainGrid.Width = System.Windows.SystemParameters.PrimaryScreenWidth;
+
             miKinect = new KinectSensorChooser();
             miKinect.KinectChanged += miKinect_KinectChanged;
             //detecta si un kinect se conecta o esta desconectado, etc...
