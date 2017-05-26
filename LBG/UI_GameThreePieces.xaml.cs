@@ -23,6 +23,7 @@ namespace LBG
         const int                  skeletonCount          = 6;
         Skeleton[]                 allSkeletons           = new Skeleton[skeletonCount];
         int                        cHandRight             = 0;
+        int                        cHandRightOnHead       = 0;
         int                        cHandLeft              = 0;
         int                        cHandOnHead            = 0;
         DateTime                   dHandOnImage;
@@ -122,96 +123,6 @@ namespace LBG
             e.NewSensor.AllFramesReady += kinect_SkeletonFrameReady;
         }
 
-        void kinect_SkeletonFrameReady(object sender, AllFramesReadyEventArgs e)
-        {
-            if (closing)
-            {
-                return;
-            }
-            //Get a skeleton
-            Skeleton skeleton = GetFirstSkeleton(e);
-
-            if (skeleton == null)
-            {
-                return;
-            }
-
-            GetCameraPoint(skeleton, e);
-
-            ellipseHead.Visibility = Visibility.Visible;
-            ellipseHandLeft.Visibility = Visibility.Visible;
-            ellipseHandRight.Visibility = Visibility.Visible;
-
-            //Llamar handOnHead hasta que este bien o hasta que pase cierto tiempo - CONTADOR 
-            if (handOnImage(imageHead, ellipseHandRight)) //mano derecha en la cabeza
-            {
-                cHandRight++;
-                Thread.Sleep(1000);
-
-                Log("cHandRight" + cHandRight.ToString());
-                labelHead.Content = "cHandRight" + cHandRight.ToString();
-                labelHead.Visibility = Visibility.Visible;
-            }
-
-            if (handOnImage(imageHead, ellipseHandLeft)) //mano izquierda en la cabeza
-            {
-                cHandLeft++;
-                Thread.Sleep(1000);
-                Log("cHandLeft" + cHandLeft.ToString());
-                labelHead.Content = "cHandLeft" + cHandLeft.ToString();
-                labelHead.Visibility = Visibility.Visible;
-            }
-            
-
-            if(cHandRight == 10)
-            {
-                dHandOnImage = DateTime.Now;
-                Log("----------------------------------------------------------------------------------------------------");
-                Log("headOnImage - MANO DERECHA");
-                labelResult.Content = "headOnImage - MANO DERECHA";
-                labelResult.Visibility = Visibility.Visible;
-                //if (handOnHead(ellipseHandRight, ellipseHead))
-                //{
-                //    Log("----------------------------------------------------------------------------------------------------");
-                //    Log("handOnHead - BIEN");
-                //    labelResult.Content = "BIEN";
-                //    labelResult.Visibility = Visibility.Visible;
-                //    //cHandRight = 0;
-                //}
-                //else
-                //{
-                //    Log("----------------------------------------------------------------------------------------------------");
-                //    Log("handOnHead - MAL");
-                //    labelResult.Content = "MAL";
-                //    labelResult.Visibility = Visibility.Visible;
-                //}
-            }
-
-            if(cHandLeft == 10)
-            {
-                dHandOnImage = DateTime.Now;
-                Log("----------------------------------------------------------------------------------------------------");
-                Log("headOnImage - MANO IZQUIERDA");
-                labelResult.Content = "headOnImage - MANO IZQUIERDA";
-                labelResult.Visibility = Visibility.Visible;
-                //if (handOnHead(ellipseHandLeft, ellipseHead))
-                //{
-                //    Log("----------------------------------------------------------------------------------------------------");
-                //    Log("handOnHead - BIEN");
-                //    labelResult.Content = "BIEN";
-                //    labelResult.Visibility = Visibility.Visible;
-                //    //cHandLeft = 0; 
-                //}
-                //else
-                //{
-                //    Log("----------------------------------------------------------------------------------------------------");
-                //    Log("handOnHead - MAL");
-                //    labelResult.Content = "MAL";
-                //    labelResult.Visibility = Visibility.Visible;
-                //}
-            }
-        }
-               
         Skeleton GetFirstSkeleton(AllFramesReadyEventArgs e)
         {
             using (SkeletonFrame skeletonFrameData = e.OpenSkeletonFrame())
@@ -228,6 +139,54 @@ namespace LBG
             }
         }
 
+        void kinect_SkeletonFrameReady(object sender, AllFramesReadyEventArgs e)
+        {
+            if (closing)
+            {
+                return;
+            }
+            //Get a skeleton
+            Skeleton skeleton = GetFirstSkeleton(e);
+
+            if (skeleton == null)
+            {
+                return;
+            }
+
+            GetCameraPoint(skeleton, e);
+
+            ellipseHead.Visibility = Visibility.Visible; //CABEZA
+            ellipseHandLeft.Visibility = Visibility.Visible; //MANO IZQUIERDA
+            ellipseHandRight.Visibility = Visibility.Visible; //MANO DERECHA
+
+            //Llamar handOnHead hasta que este bien o hasta que pase cierto tiempo - CONTADOR 
+
+            if (handOnImage(imageHead, ellipseHandRight)) //MANO DERECHA en la cabeza (imagen)
+            {
+                cHandRight++;
+
+                Log("cHandRight: " + cHandRight.ToString());
+                labelCHandRight.Content = cHandRight.ToString();
+                labelHandRight.Visibility = Visibility.Visible;
+                labelCHandRight.Visibility = Visibility.Visible;
+                cHandLeft = 0;
+            }
+
+            if (handOnImage(imageHead, ellipseHandLeft)) //MANO IZQUIERDA en la cabeza (imagen)
+            {
+                cHandLeft++;
+                //Thread.Sleep(1000);
+
+                Log("cHandLeft" + cHandLeft.ToString());
+                labelCHandLeft.Content = cHandLeft.ToString();
+                labelHandLeft.Visibility = Visibility.Visible;
+                labelCHandLeft.Visibility = Visibility.Visible;
+
+                cHandRight = 0;
+            }
+
+        }
+               
         void GetCameraPoint(Skeleton first, AllFramesReadyEventArgs e)
         {
             using (DepthImageFrame depth = e.OpenDepthImageFrame())
@@ -252,6 +211,35 @@ namespace LBG
                 CameraPosition(ellipseHead, headColorPoint, "HEAD");
                 CameraPosition(ellipseHandLeft, leftHandColorPoint, "LEFT HAND");
                 CameraPosition(ellipseHandRight, rightHandColorPoint, "RIGHT HAND");
+
+
+                if (cHandRight == 10) //MANO DERECHA PASO 10 VECES
+                {
+                    dHandOnImage = DateTime.Now;
+                    Log("----------------------------------------------------------------------------------------------------");
+                    Log("headOnImage - MANO DERECHA");
+                   
+                    CameraPosition(ellipseHead, headColorPoint, "HEAD - cHandRight");
+                    CameraPosition(ellipseHandRight, rightHandColorPoint, "RIGHT HAND - cHandRight");
+                }
+
+                if (handOnImage(ellipseHandRight, ellipseHead))
+                {
+                    Log("----------------------------------------------------------------------------------------------------");
+                    Log("handOnHead - BIEN - ++ ");
+                    cHandRightOnHead ++;
+                    labelResult.Content = "BIEN ++: " + cHandRightOnHead;
+                    labelResult.Visibility = Visibility.Visible;
+                }
+                
+                if(cHandRightOnHead == 10)
+                {
+                    Log("BIEN");
+                    labelResult2.Content = "BIEN";
+                    labelResult2.Visibility = Visibility.Visible;
+                }
+
+                Log("cHandRightOnHead" + cHandRightOnHead.ToString());
             }
         }
 
@@ -279,6 +267,8 @@ namespace LBG
 
         bool handOnImage(FrameworkElement element1, FrameworkElement element2)
         {
+            Log("----------------------------------------------------------------------------------------------------"); 
+            Log("----------------------------------------------------------------------------------------------------");
             Log("HAND ON IMAGE");
 
             double e1X1 = Canvas.GetLeft(element1);
@@ -295,14 +285,14 @@ namespace LBG
 
             bool distance = (e1X1 < e2X1) && (e2X2 < e1X2) && (e1Y1 < e2Y1) && (e2Y2 < e1Y2);
 
-            Log("Mano X1:" + e1X1.ToString());
-            Log("Mano Y1:" + e1Y1.ToString());
-            Log("Mano X2:" + e1X2.ToString());
-            Log("Mano Y2:" + e1Y2.ToString());
-            Log("Dibujo Cabeza X1:" + e2X1.ToString());
-            Log("Dibujo Cabeza Y1:" + e2Y1.ToString());
-            Log("Dibujo Cabeza X2:" + e2X2.ToString());
-            Log("Dibujo Cabeza Y2:" + e2Y2.ToString());
+            //Log("Mano X1:" + e1X1.ToString());
+            //Log("Mano Y1:" + e1Y1.ToString());
+            //Log("Mano X2:" + e1X2.ToString());
+            //Log("Mano Y2:" + e1Y2.ToString());
+            //Log("Dibujo Cabeza X1:" + e2X1.ToString());
+            //Log("Dibujo Cabeza Y1:" + e2Y1.ToString());
+            //Log("Dibujo Cabeza X2:" + e2X2.ToString());
+            //Log("Dibujo Cabeza Y2:" + e2Y2.ToString());
 
             if (distance)
             {
@@ -316,62 +306,19 @@ namespace LBG
             }
         }
 
-        bool handOnHead(FrameworkElement element1, FrameworkElement element2)
-        {
-            Thread.Sleep(2000);
-            Log("----------------------------------------------------------------------------------------------------");
-            Log("handOnHead");
+            //dHandOnHead = DateTime.Now;
+            //int minutes = (int) dHandOnHead.Subtract(dHandOnImage).TotalMinutes;
 
-            Vector2 hand, head;
-            hand.X = Canvas.GetLeft(element1);
-            hand.Y = Canvas.GetTop(element1);
-            head.X = Canvas.GetLeft(element2);
-            head.Y = Canvas.GetTop(element2);
-            Log("----------------------------------------------------------------------------------------------------");
-            Log("handOnHead - Cabeza X " + Canvas.GetLeft(element1).ToString());
-            Log("handOnHead - Cabeza Y " + Canvas.GetTop(element1).ToString());
-            Log("handOnHead - Mano X " + Canvas.GetLeft(element2).ToString());
-            Log("handOnHead - Mano Y " + Canvas.GetTop(element2).ToString());
-            
-            if(GetDistanceBetweenJoints(hand, head))
-            {
-                cHandOnHead ++;
-            }
-            Log("----------------------------------------------------------------------------------------------------");
-            Log("Hand On Head - Result " + GetDistanceBetweenJoints(hand, head));
-            Log("Hand On Head - cHandOnHead " + cHandOnHead.ToString());
+            //Log("Hand On Head - minutes " + minutes.ToString());
 
-            dHandOnHead = DateTime.Now;
-            int minutes = (int) dHandOnHead.Subtract(dHandOnImage).TotalMinutes;
-
-            Log("Hand On Head - minutes " + minutes.ToString());
-
-            if (cHandOnHead == 10 && !(minutes < 2)) //Si la mano esta en la cabeza 10 veces y pasaron menos de 2 minutos 
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public static bool GetDistanceBetweenJoints(Vector2 firstJointType, Vector2 secondJointType)
-        {
-            double distance = (firstJointType.X - secondJointType.X) +
-                              (firstJointType.Y - secondJointType.Y);
-            Log("----------------------------------------------------------------------------------------------------");
-            if (Math.Abs(distance) > 0.05f)
-            {
-                Log("GetDistanceBetweenJoints - FALSE - " + distance);
-                return false;
-            }
-            else
-            {
-                Log("GetDistanceBetweenJoints - TRUE: " + distance);
-                return true;
-            }
-        }
+            //if (cHandOnHead == 10 && !(minutes < 2)) //Si la mano esta en la cabeza 10 veces y pasaron menos de 2 minutos 
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
 
         private void btn_back(object sender, RoutedEventArgs e)
         {
