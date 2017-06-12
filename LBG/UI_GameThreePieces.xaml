@@ -10,27 +10,49 @@
         WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <Canvas Name ="MainCanvas" Width="1312" Margin="0,0,-8,0" >
-            <!--<k:KinectRegion Name="ZonaCursor" Margin="10,-10,-10,0" Grid.ColumnSpan="2">-->
+            <!--Titles-->
             <Image x:Name="image1" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\title_gameOne.png" Height="201" HorizontalAlignment="Left" VerticalAlignment="Top" Width="950" Margin="186,0,0,0" />
             <Image x:Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoyWhite.png" HorizontalAlignment="Left" Width="390" Margin="450,146,0,0" Height="513" VerticalAlignment="Top" />
             <k:KinectTileButton Click="btn_back" Foreground="{x:Null}" Margin="38,46,1157,587" BorderBrush="{x:Null}" Height="109" Width="109" Background="{x:Null}" LabelBackground="{x:Null}">
                 <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\back.png" Height="109" Width="109" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </k:KinectTileButton>
 
+            <!--Images in space-->
             <Image Name="imageHead" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png"  Canvas.Left="964" Canvas.Top="324" Height="268" Width="271" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <!--<Image Name="imageTorso" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentTorso.png"  Canvas.Left="50" Canvas.Top="454" Height="265" Width="400" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+            <!--<Image Name="imageLegs" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLegs.png"  Canvas.Left="50" Canvas.Top="226" Height="124" Width="284" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+
+            <!--Images in boy-->
+            <Image x:Name="imageHeadInBody" Stretch="UniformToFill" Source="Images/Body_Parts/transparentHead.png"  Canvas.Left="523" Canvas.Top="151" Height="248" Width="253" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+            <!--<Image x:Name="imageTorsoInBody" Stretch="UniformToFill" Source="Images/Body_Parts/transparentTorso.png"  Canvas.Left="454" Canvas.Top="301" Height="250" Width="392" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+            <Image x:Name="imageLegsInBody" Stretch="UniformToFill" Source="Images/Body_Parts/transparentLegs.png"  Canvas.Left="498" Canvas.Top="533" Height="124" Width="284" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>-->
+
+            <!--Texts-->
             <Label Name="labelHandRight" TextElement.FontSize="40" Content="Derecha en la cabeza" Visibility="Hidden" Canvas.Left="818" Canvas.Top="226" />
             <Label Name="labelHandLeft" TextElement.FontSize="40" Content="Izquierda en la cabeza" Visibility="Hidden" Canvas.Left="800" Canvas.Top="163" />
             <Label Name="labelCHandRight" TextElement.FontSize="40" Content="0" Visibility="Hidden" Canvas.Left="1241" Canvas.Top="226" />
             <Label Name="labelCHandLeft" TextElement.FontSize="40" Content="0" Visibility="Hidden" Canvas.Left="1241" Canvas.Top="168" />
-            <Label Name="labelResult" TextElement.FontSize="40" Content="BIEN" Visibility="Hidden" Canvas.Left="38" Canvas.Top="324" />
-            <Label Name="labelResult2" TextElement.FontSize="40" Content="BIEN" Visibility="Hidden" Canvas.Left="38" Canvas.Top="386" />
-            <Ellipse Name="ellipseHead" Canvas.Left="617" Canvas.Top="34" Height="50" Stroke="Black" Width="50" Fill="#000000" Visibility="Collapsed"/>
+            <Label Name="labelResult" TextElement.FontSize="40" Content="BIEN" Visibility="Hidden" Canvas.Left="845" Canvas.Top="656" />
+            <Label Name="labelResult2" TextElement.FontSize="40" Content="BIEN" Visibility="Hidden" Canvas.Left="1141" Canvas.Top="656" />
+
+            <!--Joints-->
+            <Ellipse Name="ellipseHead" Canvas.Left="617" Canvas.Top="34" Height="100" Stroke="Black" Width="100" Fill="#000000" Visibility="Hidden"/>
+            <!--<Ellipse Name="ellipseShoulderCenter" Canvas.Left="617" Canvas.Top="34" Height="100" Stroke="Black" Width="100" Fill="#000000" Visibility="Hidden"/>
+            <Ellipse Name="ellipseSpine" Canvas.Left="617" Canvas.Top="34" Height="100" Stroke="Black" Width="100" Fill="#000000" Visibility="Hidden"/>
+            <Ellipse Name="ellipseHipCenter" Canvas.Left="617" Canvas.Top="34" Height="100" Stroke="Black" Width="100" Fill="#000000" Visibility="Hidden"/>
+            <Ellipse Name="ellipseKneeRight" Canvas.Left="617" Canvas.Top="34" Height="100" Stroke="Black" Width="100" Fill="#000000" Visibility="Hidden"/>
+            <Ellipse Name="ellipseKneeLeft" Canvas.Left="617" Canvas.Top="34" Height="100" Stroke="Black" Width="100" Fill="#000000" Visibility="Hidden"/>
+            <Ellipse Name="ellipseAnkleRight" Canvas.Left="617" Canvas.Top="34" Height="100" Stroke="Black" Width="100" Fill="#000000" Visibility="Hidden"/>
+            <Ellipse Name="ellipseAnkleLeft" Canvas.Left="617" Canvas.Top="34" Height="100" Stroke="Black" Width="100" Fill="#000000" Visibility="Hidden"/>
+            <Ellipse Name="ellipseFootRight" Canvas.Left="617" Canvas.Top="34" Height="100" Stroke="Black" Width="100" Fill="#000000" Visibility="Hidden"/>
+            <Ellipse Name="ellipseFootLeft" Canvas.Left="617" Canvas.Top="34" Height="100" Stroke="Black" Width="100" Fill="#000000" Visibility="Hidden"/>-->
+
+            <!--Images Hands-->
             <Image Name="ellipseHandLeft" Canvas.Left="517" Canvas.Top="10" Height="100"  Width="100" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\handLeft.png" Visibility="Collapsed" />
             <Image Name="ellipseHandRight" Canvas.Left="662" Canvas.Top="10" Height="100" Width="100" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\handRight.png" Visibility="Collapsed"/>
+
             <k:KinectSensorChooserUI Name="sensorChooserUI" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1" Margin="240,0,651,0"></k:KinectSensorChooserUI>
 
         </Canvas>
-        <!--</k:KinectRegion>-->
-
     </Grid>
 </Window>
