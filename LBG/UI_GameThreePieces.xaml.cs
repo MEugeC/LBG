@@ -28,6 +28,8 @@ namespace LBG
         int                        cHandLeftOnHead        = 0;
         int                        cHandRightOnImageTorso = 0;
         int                        cHandLeftOnImageTorso  = 0;
+        int                        cHandRightOnTorso      = 0;
+        int                        cHandLeftOnTorso       = 0;
         DateTime                   dHandOnImage;
 
         [Serializable]
@@ -159,6 +161,9 @@ namespace LBG
             ellipseHead.Visibility = Visibility.Visible; //CABEZA
             ellipseHandLeft.Visibility = Visibility.Visible; //MANO IZQUIERDA
             ellipseHandRight.Visibility = Visibility.Visible; //MANO DERECHA
+            ellipseHipCenter.Visibility = Visibility.Visible;
+            ellipseShoulderCenter.Visibility = Visibility.Visible;
+            ellipseSpine.Visibility = Visibility.Visible;
 
             //Llamar handOnHead hasta que este bien o hasta que pase cierto tiempo - CONTADOR 
 
@@ -218,37 +223,38 @@ namespace LBG
                     return;
                 }
 
-                DepthImagePoint headDepthPoint = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.Head].Position, DepthImageFormat.Resolution640x480Fps30);
+                DepthImagePoint headDepthPoint           = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.Head].Position, DepthImageFormat.Resolution640x480Fps30);
+                DepthImagePoint leftHandDepthPoint       = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.HandLeft].Position, DepthImageFormat.Resolution640x480Fps30);
+                DepthImagePoint rightHandDepthPoint      = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.HandRight].Position, DepthImageFormat.Resolution640x480Fps30);
+                DepthImagePoint shoulderCenterDepthPoint = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.ShoulderCenter].Position, DepthImageFormat.Resolution640x480Fps30);
+                DepthImagePoint spineDepthPoint          = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.Spine].Position, DepthImageFormat.Resolution640x480Fps30);
+                DepthImagePoint hipCenterDepthPoint      = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.HipCenter].Position, DepthImageFormat.Resolution640x480Fps30);
 
-                DepthImagePoint leftHandDepthPoint = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.HandLeft].Position, DepthImageFormat.Resolution640x480Fps30);
-
-                DepthImagePoint rightHandDepthPoint = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.HandRight].Position, DepthImageFormat.Resolution640x480Fps30);
-
-                ColorImagePoint headColorPoint = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, headDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
-
-                ColorImagePoint leftHandColorPoint = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, leftHandDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
-
-                ColorImagePoint rightHandColorPoint = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, rightHandDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
+                ColorImagePoint headColorPoint           = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, headDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
+                ColorImagePoint leftHandColorPoint       = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, leftHandDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
+                ColorImagePoint rightHandColorPoint      = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, rightHandDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
+                ColorImagePoint shoulderCenterColorPoint = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, shoulderCenterDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
+                ColorImagePoint spineColorPoint          = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, spineDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
+                ColorImagePoint hipCenterColorPoint      = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, hipCenterDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
 
                 CameraPosition(ellipseHead, headColorPoint, "HEAD");
                 CameraPosition(ellipseHandLeft, leftHandColorPoint, "LEFT HAND");
                 CameraPosition(ellipseHandRight, rightHandColorPoint, "RIGHT HAND");
+                CameraPosition(ellipseShoulderCenter, shoulderCenterColorPoint, "SHOULDER CENTER");
+                CameraPosition(ellipseSpine, spineColorPoint, "SPINE");
+                CameraPosition(ellipseHipCenter, hipCenterColorPoint, "HIP CENTER");
 
-
+                //---------------------------------------------------------------------------------------------------------------//
+                //---------------------------------------------------------------------------------------------------------------//
                 if (cHandRightOnImageHead == 10) //MANO DERECHA PASO 10 VECES
                 {
                     dHandOnImage = DateTime.Now;
-                    Log("----------------------------------------------------------------------------------------------------");
-                    Log("headOnImage - MANO DERECHA");
-
                     CameraPosition(ellipseHead, headColorPoint, "HEAD - cHandRightOnImageHead");
                     CameraPosition(ellipseHandRight, rightHandColorPoint, "RIGHT HAND - cHandRightOnImageHead");
                 }
 
                 if (handOnImage(ellipseHandRight, ellipseHead))
                 {
-                    Log("----------------------------------------------------------------------------------------------------");
-                    Log("handOnHead - BIEN - ++ ");
                     cHandRightOnHead++;
                     labelResult.Content = "++: " + cHandRightOnHead;
                     labelResult.Visibility = Visibility.Visible;
@@ -256,7 +262,6 @@ namespace LBG
 
                 if (cHandRightOnHead == 10)
                 {
-                    Log("BIEN");
                     labelResult2.Content = "BIEN";
                     labelResult2.Visibility = Visibility.Visible;
                     imageHeadInBody.Visibility = Visibility.Visible;
@@ -264,21 +269,16 @@ namespace LBG
                 }
 
                 Log("cHandRightOnHead" + cHandRightOnHead.ToString());
-
+                //---------------------------------------------------------------------------------------------------------------//
                 if (cHandLeftOnImageHead == 10) //MANO DERECHA PASO 10 VECES
                 {
                     dHandOnImage = DateTime.Now;
-                    Log("----------------------------------------------------------------------------------------------------");
-                    Log("headOnImage - MANO DERECHA");
-
                     CameraPosition(ellipseHead, headColorPoint, "HEAD - cHandRightOnImageHead");
                     CameraPosition(ellipseHandLeft, leftHandColorPoint, "RIGHT HAND - cHandRightOnImageHead");
                 }
 
                 if (handOnImage(ellipseHandLeft, ellipseHead))
                 {
-                    Log("----------------------------------------------------------------------------------------------------");
-                    Log("handOnHead - BIEN - ++ ");
                     cHandLeftOnHead++;
                     labelResult.Content = "++: " + cHandLeftOnHead;
                     labelResult.Visibility = Visibility.Visible;
@@ -286,12 +286,70 @@ namespace LBG
 
                 if (cHandLeftOnHead == 10)
                 {
-                    Log("BIEN");
                     labelResult2.Content = "BIEN";
                     labelResult2.Visibility = Visibility.Visible;
                     imageHeadInBody.Visibility = Visibility.Visible;
                     imageHead.Visibility = Visibility.Hidden;
                 }
+
+                //---------------------------------------------------------------------------------------------------------------//
+                //---------------------------------------------------------------------------------------------------------------//
+
+                if (cHandRightOnImageTorso == 10) //MANO DERECHA PASO 10 VECES
+                {
+                    dHandOnImage = DateTime.Now;
+                    CameraPosition(ellipseHandLeft, rightHandColorPoint, "RIGHT HAND - cHandRightOnImageHead");
+                    CameraPosition(ellipseShoulderCenter, shoulderCenterColorPoint, "SHOULDER CENTER");
+                    CameraPosition(ellipseSpine, spineColorPoint, "SPINE");
+                    CameraPosition(ellipseHipCenter, hipCenterColorPoint, "HIP CENTER");
+                }
+
+                if (handOnImage(ellipseHandRight, ellipseShoulderCenter) ||
+                    handOnImage(ellipseHandRight, ellipseSpine) ||
+                    handOnImage(ellipseHandRight, ellipseHipCenter))
+                {
+                    cHandRightOnTorso++;
+                    labelResult.Content = "++: " + cHandRightOnTorso;
+                    labelResult.Visibility = Visibility.Visible;
+                }
+
+                if (cHandRightOnTorso == 10)
+                {
+                    labelResult2.Content = "BIEN";
+                    labelResult2.Visibility = Visibility.Visible;
+                    imageTorsoInBody.Visibility = Visibility.Visible;
+                    imageTorso.Visibility = Visibility.Hidden;
+                }
+                //---------------------------------------------------------------------------------------------------------------//
+                if (cHandLeftOnImageTorso == 10) //MANO IZQUIERDA PASO 10 VECES
+                {
+                    dHandOnImage = DateTime.Now;
+                    CameraPosition(ellipseHandLeft, leftHandColorPoint, "RIGHT HAND - cHandRightOnImageHead");
+                    CameraPosition(ellipseShoulderCenter, shoulderCenterColorPoint, "SHOULDER CENTER");
+                    CameraPosition(ellipseSpine, spineColorPoint, "SPINE");
+                    CameraPosition(ellipseHipCenter, hipCenterColorPoint, "HIP CENTER");
+                }
+
+                if (handOnImage(ellipseHandLeft, ellipseShoulderCenter) ||
+                    handOnImage(ellipseHandLeft, ellipseSpine) ||
+                    handOnImage(ellipseHandLeft, ellipseHipCenter))
+                {
+                    cHandLeftOnTorso++;
+                    labelResult.Content = "++: " + cHandLeftOnTorso;
+                    labelResult.Visibility = Visibility.Visible;
+                }
+
+                if (cHandLeftOnTorso == 10)
+                {
+                    labelResult2.Content = "BIEN";
+                    labelResult2.Visibility = Visibility.Visible;
+                    imageTorsoInBody.Visibility = Visibility.Visible;
+                    imageTorso.Visibility = Visibility.Hidden;
+                }
+
+                Log("cHandRightOnHead" + cHandRightOnTorso.ToString());
+
+                Log("cHandRightOnHead" + cHandLeftOnTorso.ToString());
             }
         }
 
@@ -319,10 +377,6 @@ namespace LBG
 
         bool handOnImage(FrameworkElement element1, FrameworkElement element2)
         {
-            Log("----------------------------------------------------------------------------------------------------");
-            Log("----------------------------------------------------------------------------------------------------");
-            Log("HAND ON IMAGE");
-
             double e1X1 = Canvas.GetLeft(element1);
             double e1Y1 = Canvas.GetTop(element1);
 

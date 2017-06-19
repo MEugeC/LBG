@@ -20,10 +20,11 @@
 
             <!--Images in space-->
             <Image Name="imageHead" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png"  Canvas.Left="964" Canvas.Top="324" Height="268" Width="271" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Image Name="imageTorso" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentTorso.png"  Canvas.Left="50" Canvas.Top="454" Height="265" Width="400" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Image Name="imageTorso" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentTorso.png"  Canvas.Left="50" Canvas.Top="394" Height="265" Width="400" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
             <!--Images in body-->
-            <Image x:Name="imageHeadInBody" Stretch="UniformToFill" Source="Images/Body_Parts/transparentHead.png"  Canvas.Left="523" Canvas.Top="151" Height="248" Width="253" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+            <Image Name="imageHeadInBody" Stretch="UniformToFill" Source="Images/Body_Parts/transparentHead.png"  Canvas.Left="523" Canvas.Top="151" Height="248" Width="253" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+            <Image Name="imageTorsoInBody" Stretch="UniformToFill" Source="Images/Body_Parts/transparentTorso.png"  Canvas.Left="454" Canvas.Top="301" Height="250" Width="392" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
 
             <!--Texts-->
             <Label Name="labelHandRight" TextElement.FontSize="40" Content="Derecha" Visibility="Hidden" Canvas.Left="1058" Canvas.Top="246" />
@@ -34,7 +35,10 @@
             <Label Name="labelResult2" TextElement.FontSize="40" Content="BIEN" Visibility="Hidden" Canvas.Left="840" Canvas.Top="193" />
 
             <!--Joints-->
-            <Ellipse Name="ellipseHead" Canvas.Left="617" Canvas.Top="34" Height="50" Stroke="Black" Width="50" Fill="#000000" Visibility="Collapsed"/>
+            <Ellipse Name="ellipseHead" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Black" Visibility="Collapsed"/>
+            <Ellipse Name="ellipseShoulderCenter" Canvas.Left="617" Canvas.Top="34" Height="50"  Width="50" Fill="Red" Visibility="Collapsed"/>
+            <Ellipse Name="ellipseSpine" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Blue" Visibility="Collapsed"/>
+            <Ellipse Name="ellipseHipCenter" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Green" Visibility="Collapsed"/>
 
             <!--Images Hands-->
             <Image Name="ellipseHandLeft" Canvas.Left="517" Canvas.Top="10" Height="100"  Width="100" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\handLeft.png" Visibility="Collapsed" />
