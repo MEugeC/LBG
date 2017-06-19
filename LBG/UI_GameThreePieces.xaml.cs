@@ -25,6 +25,7 @@ namespace LBG
         int cHandRight = 0;
         int cHandRightOnHead = 0;
         int cHandLeft = 0;
+        int cHandLeftOnHead = 0;
         int cHandOnHead = 0;
         DateTime dHandOnImage;
         DateTime dHandOnHead;
@@ -242,6 +243,34 @@ namespace LBG
                 }
 
                 Log("cHandRightOnHead" + cHandRightOnHead.ToString());
+
+                if (cHandLeft == 10) //MANO DERECHA PASO 10 VECES
+                {
+                    dHandOnImage = DateTime.Now;
+                    Log("----------------------------------------------------------------------------------------------------");
+                    Log("headOnImage - MANO DERECHA");
+
+                    CameraPosition(ellipseHead, headColorPoint, "HEAD - cHandRight");
+                    CameraPosition(ellipseHandLeft, leftHandColorPoint, "RIGHT HAND - cHandRight");
+                }
+
+                if (handOnImage(ellipseHandLeft, ellipseHead))
+                {
+                    Log("----------------------------------------------------------------------------------------------------");
+                    Log("handOnHead - BIEN - ++ ");
+                    cHandLeftOnHead++;
+                    labelResult.Content = "BIEN ++: " + cHandLeftOnHead;
+                    labelResult.Visibility = Visibility.Visible;
+                }
+
+                if (cHandLeftOnHead == 10)
+                {
+                    Log("BIEN");
+                    labelResult2.Content = "BIEN";
+                    labelResult2.Visibility = Visibility.Visible;
+                    imageHeadInBody.Visibility = Visibility.Visible;
+                    imageHead.Visibility = Visibility.Hidden;
+                }
             }
         }
 
@@ -286,15 +315,6 @@ namespace LBG
             double e2Y2 = Canvas.GetTop(element2) + element2.Height;
 
             bool distance = (e1X1 < e2X1) && (e2X2 < e1X2) && (e1Y1 < e2Y1) && (e2Y2 < e1Y2);
-
-            //Log("Mano X1:" + e1X1.ToString());
-            //Log("Mano Y1:" + e1Y1.ToString());
-            //Log("Mano X2:" + e1X2.ToString());
-            //Log("Mano Y2:" + e1Y2.ToString());
-            //Log("Dibujo Cabeza X1:" + e2X1.ToString());
-            //Log("Dibujo Cabeza Y1:" + e2Y1.ToString());
-            //Log("Dibujo Cabeza X2:" + e2X2.ToString());
-            //Log("Dibujo Cabeza Y2:" + e2Y2.ToString());
 
             if (distance)
             {
