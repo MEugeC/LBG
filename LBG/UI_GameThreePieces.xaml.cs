@@ -30,6 +30,8 @@ namespace LBG
         int                        cHandLeftOnImageTorso  = 0;
         int                        cHandRightOnTorso      = 0;
         int                        cHandLeftOnTorso       = 0;
+        int                        cHandRightOnImageLegs  = 0;
+        int                        cHandLeftOnImageLegs   = 0;
         DateTime                   dHandOnImage;
 
         [Serializable]
@@ -158,12 +160,12 @@ namespace LBG
 
             GetCameraPoint(skeleton, e);
 
-            ellipseHead.Visibility = Visibility.Visible; //CABEZA
-            ellipseHandLeft.Visibility = Visibility.Visible; //MANO IZQUIERDA
-            ellipseHandRight.Visibility = Visibility.Visible; //MANO DERECHA
-            ellipseHipCenter.Visibility = Visibility.Visible;
-            ellipseShoulderCenter.Visibility = Visibility.Visible;
-            ellipseSpine.Visibility = Visibility.Visible;
+            ellipseHead.Visibility           = Visibility.Visible; //CABEZA
+            ellipseHandLeft.Visibility       = Visibility.Visible; //MANO IZQUIERDA
+            ellipseHandRight.Visibility      = Visibility.Visible; //MANO DERECHA
+            ellipseHipCenter.Visibility      = Visibility.Visible; //HIP
+            ellipseShoulderCenter.Visibility = Visibility.Visible; //SHOULDER CENTER
+            ellipseSpine.Visibility          = Visibility.Visible; //SPINE
 
             //Llamar handOnHead hasta que este bien o hasta que pase cierto tiempo - CONTADOR 
 
@@ -210,6 +212,28 @@ namespace LBG
                 labelHandLeft.Visibility = Visibility.Visible;
                 labelCHandLeft.Visibility = Visibility.Visible;
                 cHandRightOnImageTorso = 0;
+            }
+
+            if (handOnImage(imageLegs, ellipseHandRight)) //MANO DERECHA en la cabeza (imagen)
+            {
+                cHandRightOnImageLegs++;
+
+                Log("cHandRightOnImageLegs: " + cHandRightOnImageLegs.ToString());
+                labelCHandRight.Content = cHandRightOnImageLegs.ToString();
+                labelHandRight.Visibility = Visibility.Visible;
+                labelCHandRight.Visibility = Visibility.Visible;
+                cHandLeftOnImageLegs = 0;
+            }
+
+            if (handOnImage(imageLegs, ellipseHandLeft)) //MANO DERECHA en la cabeza (imagen)
+            {
+                cHandLeftOnImageLegs++;
+
+                Log("cHandLeftOnImageLegs: " + cHandLeftOnImageLegs.ToString());
+                labelCHandLeft.Content = cHandLeftOnImageLegs.ToString();
+                labelHandLeft.Visibility = Visibility.Visible;
+                labelCHandLeft.Visibility = Visibility.Visible;
+                cHandRightOnImageLegs = 0;
             }
 
         }
