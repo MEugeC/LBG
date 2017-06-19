@@ -18,17 +18,17 @@ namespace LBG
     public partial class UI_GameThreePieces : Window
     {
         static KinectSensorChooser mKinect;
-        const int PostureDetectionNumber = 100;
-        bool closing = false;
-        const int skeletonCount = 6;
-        Skeleton[] allSkeletons = new Skeleton[skeletonCount];
-        int cHandRight = 0;
-        int cHandRightOnHead = 0;
-        int cHandLeft = 0;
-        int cHandLeftOnHead = 0;
-        int cHandOnHead = 0;
-        DateTime dHandOnImage;
-        DateTime dHandOnHead;
+        const int                  PostureDetectionNumber = 100;
+        bool                       closing                = false;
+        const int                  skeletonCount          = 6;
+        Skeleton[]                 allSkeletons           = new Skeleton[skeletonCount];
+        int                        cHandRightOnImageHead  = 0;
+        int                        cHandRightOnHead       = 0;
+        int                        cHandLeftOnImageHead   = 0;
+        int                        cHandLeftOnHead        = 0;
+        int                        cHandRightOnImageTorso = 0;
+        int                        cHandLeftOnImageTorso  = 0;
+        DateTime                   dHandOnImage;
 
         [Serializable]
         public struct Vector2
@@ -164,26 +164,47 @@ namespace LBG
 
             if (handOnImage(imageHead, ellipseHandRight)) //MANO DERECHA en la cabeza (imagen)
             {
-                cHandRight++;
+                cHandRightOnImageHead++;
 
-                Log("cHandRight: " + cHandRight.ToString());
-                labelCHandRight.Content = cHandRight.ToString();
+                Log("cHandRightOnImageHead: " + cHandRightOnImageHead.ToString());
+                labelCHandRight.Content = cHandRightOnImageHead.ToString();
                 labelHandRight.Visibility = Visibility.Visible;
                 labelCHandRight.Visibility = Visibility.Visible;
-                cHandLeft = 0;
+                cHandLeftOnImageHead = 0;
             }
 
             if (handOnImage(imageHead, ellipseHandLeft)) //MANO IZQUIERDA en la cabeza (imagen)
             {
-                cHandLeft++;
-                //Thread.Sleep(1000);
+                cHandLeftOnImageHead++;
 
-                Log("cHandLeft" + cHandLeft.ToString());
-                labelCHandLeft.Content = cHandLeft.ToString();
+                Log("cHandLeftOnImageHead" + cHandLeftOnImageHead.ToString());
+                labelCHandLeft.Content = cHandLeftOnImageHead.ToString();
                 labelHandLeft.Visibility = Visibility.Visible;
                 labelCHandLeft.Visibility = Visibility.Visible;
 
-                cHandRight = 0;
+                cHandRightOnImageHead = 0;
+            }
+
+            if (handOnImage(imageTorso, ellipseHandRight)) //MANO DERECHA en la cabeza (imagen)
+            {
+                cHandRightOnImageTorso++;
+
+                Log("cHandRightOnImageTorso: " + cHandRightOnImageTorso.ToString());
+                labelCHandRight.Content = cHandRightOnImageTorso.ToString();
+                labelHandRight.Visibility = Visibility.Visible;
+                labelCHandRight.Visibility = Visibility.Visible;
+                cHandLeftOnImageTorso = 0;
+            }
+
+            if (handOnImage(imageTorso, ellipseHandLeft)) //MANO DERECHA en la cabeza (imagen)
+            {
+                cHandLeftOnImageTorso++;
+
+                Log("cHandLeftOnImageTorso: " + cHandLeftOnImageTorso.ToString());
+                labelCHandLeft.Content = cHandLeftOnImageTorso.ToString();
+                labelHandLeft.Visibility = Visibility.Visible;
+                labelCHandLeft.Visibility = Visibility.Visible;
+                cHandRightOnImageTorso = 0;
             }
 
         }
@@ -214,14 +235,14 @@ namespace LBG
                 CameraPosition(ellipseHandRight, rightHandColorPoint, "RIGHT HAND");
 
 
-                if (cHandRight == 10) //MANO DERECHA PASO 10 VECES
+                if (cHandRightOnImageHead == 10) //MANO DERECHA PASO 10 VECES
                 {
                     dHandOnImage = DateTime.Now;
                     Log("----------------------------------------------------------------------------------------------------");
                     Log("headOnImage - MANO DERECHA");
 
-                    CameraPosition(ellipseHead, headColorPoint, "HEAD - cHandRight");
-                    CameraPosition(ellipseHandRight, rightHandColorPoint, "RIGHT HAND - cHandRight");
+                    CameraPosition(ellipseHead, headColorPoint, "HEAD - cHandRightOnImageHead");
+                    CameraPosition(ellipseHandRight, rightHandColorPoint, "RIGHT HAND - cHandRightOnImageHead");
                 }
 
                 if (handOnImage(ellipseHandRight, ellipseHead))
@@ -229,7 +250,7 @@ namespace LBG
                     Log("----------------------------------------------------------------------------------------------------");
                     Log("handOnHead - BIEN - ++ ");
                     cHandRightOnHead++;
-                    labelResult.Content = "BIEN ++: " + cHandRightOnHead;
+                    labelResult.Content = "++: " + cHandRightOnHead;
                     labelResult.Visibility = Visibility.Visible;
                 }
 
@@ -244,14 +265,14 @@ namespace LBG
 
                 Log("cHandRightOnHead" + cHandRightOnHead.ToString());
 
-                if (cHandLeft == 10) //MANO DERECHA PASO 10 VECES
+                if (cHandLeftOnImageHead == 10) //MANO DERECHA PASO 10 VECES
                 {
                     dHandOnImage = DateTime.Now;
                     Log("----------------------------------------------------------------------------------------------------");
                     Log("headOnImage - MANO DERECHA");
 
-                    CameraPosition(ellipseHead, headColorPoint, "HEAD - cHandRight");
-                    CameraPosition(ellipseHandLeft, leftHandColorPoint, "RIGHT HAND - cHandRight");
+                    CameraPosition(ellipseHead, headColorPoint, "HEAD - cHandRightOnImageHead");
+                    CameraPosition(ellipseHandLeft, leftHandColorPoint, "RIGHT HAND - cHandRightOnImageHead");
                 }
 
                 if (handOnImage(ellipseHandLeft, ellipseHead))
@@ -259,7 +280,7 @@ namespace LBG
                     Log("----------------------------------------------------------------------------------------------------");
                     Log("handOnHead - BIEN - ++ ");
                     cHandLeftOnHead++;
-                    labelResult.Content = "BIEN ++: " + cHandLeftOnHead;
+                    labelResult.Content = "++: " + cHandLeftOnHead;
                     labelResult.Visibility = Visibility.Visible;
                 }
 
