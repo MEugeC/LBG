@@ -347,13 +347,11 @@ namespace LBG
                             cHandRightOnImageTorso = 0;
                             cHandLeftOnImageTorso  = 0; 
                         }
-
-                        if (handOnImage(ellipseHandRight, ellipseHead))
+            
+                        if (handOnImage(ellipseHandRight, ellipseHead) && cHandRightOnImageHead >= 10)
                         {
                             cHandRightOnHead++;
                             labelResult.Content = "++: " + cHandRightOnHead;
-                            labelResult.Visibility = Visibility.Visible;
-
                             cHandLeftOnHead   = 0;
                             cHandRightOnTorso = 0; 
                             cHandLeftOnTorso  = 0;
@@ -391,7 +389,7 @@ namespace LBG
                         cHandLeftOnImageTorso  = 0; 
                     }
 
-                    if (handOnImage(ellipseHandLeft, ellipseHead))
+                    if (handOnImage(ellipseHandLeft, ellipseHead) && cHandLeftOnImageHead >= 10)
                     {
                         cHandLeftOnHead++;
                         labelResult.Content = "++: " + cHandLeftOnHead;
@@ -436,7 +434,7 @@ namespace LBG
                         cHandLeftOnImageLegs  = 0;
                     }
 
-                    if (handOnImage(ellipseHandRight, ellipseSpine))
+                    if (handOnImage(ellipseHandRight, ellipseSpine) && cHandRightOnImageTorso >= 10)
                     {
                         cHandRightOnTorso++;
                         labelResult.Content = "++: " + cHandRightOnTorso;
@@ -480,7 +478,7 @@ namespace LBG
                             cHandLeftOnImageLegs   = 0;
                         }
 
-                        if (handOnImage(ellipseHandLeft, ellipseSpine))
+                        if (handOnImage(ellipseHandLeft, ellipseSpine) && cHandLeftOnImageTorso >= 10)
                         {
                             cHandLeftOnTorso++;
                             labelResult.Content = "++: " + cHandLeftOnTorso;
@@ -529,10 +527,10 @@ namespace LBG
                             cHandLeftOnImageTorso  = 0;
                         }
 
-                        if (handOnImage(ellipseHandRight, ellipseHipRight) ||
+                        if ((handOnImage(ellipseHandRight, ellipseHipRight) ||
                             handOnImage(ellipseHandRight, ellipseHipLeft) ||
                             handOnImage(ellipseHandRight, ellipseKneeRight) ||
-                            handOnImage(ellipseHandRight, ellipseKneeLeft))
+                            handOnImage(ellipseHandRight, ellipseKneeLeft)) && cHandRightOnImageLegs >= 10)
                         {
                             cHandRightOnLegs++;
                             labelResult.Content = "++: " + cHandRightOnLegs;
@@ -577,10 +575,10 @@ namespace LBG
                             cHandLeftOnImageTorso  = 0;
                         }
 
-                        if (handOnImage(ellipseHandLeft, ellipseHipRight) ||
+                        if ((handOnImage(ellipseHandLeft, ellipseHipRight) ||
                             handOnImage(ellipseHandLeft, ellipseHipLeft) ||
                             handOnImage(ellipseHandLeft, ellipseKneeRight) ||
-                            handOnImage(ellipseHandLeft, ellipseKneeLeft))
+                            handOnImage(ellipseHandLeft, ellipseKneeLeft)) && cHandLeftOnImageLegs >= 10)
                         {
                             cHandLeftOnLegs++;
                             labelResult.Content = "++: " + cHandLeftOnLegs;
