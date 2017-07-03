@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-
+using System.Media;
 using Microsoft.Kinect;
 using Microsoft.Kinect.Toolkit;
 
@@ -13,7 +13,8 @@ namespace LBG
     {
         static KinectSensorChooser miKinect;
         //para ver si esta conectado, si se esta inicializando, etc... la tabla de todos los estados esta en la web
-        
+        SoundPlayer cheersSound = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\cheers.wav");
+
         public UI_MainMenu()
         {
             InitializeComponent();
@@ -34,7 +35,6 @@ namespace LBG
 
         void miKinect_KinectChanged(object sender, KinectChangedEventArgs e)
         {
-            //MessageBox.Show("miKinect_KinectChanged");
             bool error = true; //verificar si existe algun error
             if (e.OldSensor == null) //esto va de KinectChangedEventArgs, si es null es que lo desconcectamos
             {
@@ -84,6 +84,7 @@ namespace LBG
 
         private void btn_gameOne(object sender, RoutedEventArgs e)
         {
+            cheersSound.Play();
             miKinect.Stop();
             UI_GameOne game1 = new UI_GameOne();
             game1.Show();
