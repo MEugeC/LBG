@@ -167,121 +167,109 @@ namespace LBG
 
             GetCameraPoint(skeleton, e);
 
-            //ellipseHead.Visibility           = Visibility.Visible; //CABEZA
             ellipseHandLeft.Visibility       = Visibility.Visible; //MANO IZQUIERDA
             ellipseHandRight.Visibility      = Visibility.Visible; //MANO DERECHA
-            //ellipseHipCenter.Visibility      = Visibility.Visible; //HIP
-            //ellipseHipRight.Visibility       = Visibility.Visible;
-            //ellipseHipLeft.Visibility        = Visibility.Visible;
-            //ellipseShoulderCenter.Visibility = Visibility.Visible; //SHOULDER CENTER
-            //ellipseSpine.Visibility          = Visibility.Visible; //SPINE
-            //ellipseKneeRight.Visibility      = Visibility.Visible;
-            //ellipseKneeLeft.Visibility       = Visibility.Visible;
-            //ellipseFootRight.Visibility      = Visibility.Visible;
-            //ellipseFootLeft.Visibility       = Visibility.Visible;
-
-            //Llamar handOnHead hasta que este bien o hasta que pase cierto tiempo - CONTADOR 
 
             #region HEAD_IMAGE
-            if (handOnImage(imageHead, ellipseHandRight)) //MANO DERECHA en la cabeza (imagen)
-            {
-                cHandRightOnImageHead++;
+                if (handOnImage(imageHead, ellipseHandRight) && Canvas.GetLeft(imageHead) == 964 && Canvas.GetTop(imageHead) == 324) //MANO DERECHA en la cabeza (imagen)
+                {
+                    cHandRightOnImageHead++;
 
-                Log("cHandRightOnImageHead: " + cHandRightOnImageHead.ToString());
-                labelCHandRight.Content = cHandRightOnImageHead.ToString();
-                labelHandRight.Visibility = Visibility.Visible;
-                labelCHandRight.Visibility = Visibility.Visible;
+                    Log("cHandRightOnImageHead: " + cHandRightOnImageHead.ToString());
+                    labelCHandRight.Content = cHandRightOnImageHead.ToString();
+                    labelHandRight.Visibility = Visibility.Visible;
+                    labelCHandRight.Visibility = Visibility.Visible;
 
-                cHandLeftOnImageHead   = 0;
-                cHandRightOnImageLegs  = 0;
-                cHandLeftOnImageLegs   = 0;
-                cHandRightOnImageTorso = 0;
-                cHandLeftOnImageTorso  = 0; 
-            }
+                    cHandLeftOnImageHead   = 0;
+                    cHandRightOnImageLegs  = 0;
+                    cHandLeftOnImageLegs   = 0;
+                    cHandRightOnImageTorso = 0;
+                    cHandLeftOnImageTorso  = 0; 
+                }
 
-            if (handOnImage(imageHead, ellipseHandLeft)) //MANO IZQUIERDA en la cabeza (imagen)
-            {
-                cHandLeftOnImageHead++;
+                if (handOnImage(imageHead, ellipseHandLeft) && Canvas.GetLeft(imageHead) == 964 && Canvas.GetTop(imageHead) == 324) //MANO IZQUIERDA en la cabeza (imagen)
+                {
+                    cHandLeftOnImageHead++;
 
-                Log("cHandLeftOnImageHead" + cHandLeftOnImageHead.ToString());
-                labelCHandLeft.Content = cHandLeftOnImageHead.ToString();
-                labelHandLeft.Visibility = Visibility.Visible;
-                labelCHandLeft.Visibility = Visibility.Visible;
+                    Log("cHandLeftOnImageHead" + cHandLeftOnImageHead.ToString());
+                    labelCHandLeft.Content = cHandLeftOnImageHead.ToString();
+                    labelHandLeft.Visibility = Visibility.Visible;
+                    labelCHandLeft.Visibility = Visibility.Visible;
 
-                cHandRightOnImageHead  = 0;
-                cHandRightOnImageLegs  = 0;
-                cHandLeftOnImageLegs   = 0;
-                cHandRightOnImageTorso = 0;
-                cHandLeftOnImageTorso  = 0;
-            }
+                    cHandRightOnImageHead  = 0;
+                    cHandRightOnImageLegs  = 0;
+                    cHandLeftOnImageLegs   = 0;
+                    cHandRightOnImageTorso = 0;
+                    cHandLeftOnImageTorso  = 0;
+                }
             #endregion
 
             #region TORSO_IMAGE
-            if (handOnImage(imageTorso, ellipseHandRight)) //MANO DERECHA en la cabeza (imagen)
-            {
-                cHandRightOnImageTorso++;
+                if (handOnImage(imageTorso, ellipseHandRight) && Canvas.GetLeft(imageTorso) == 50 && Canvas.GetTop(imageTorso) == 394) //MANO DERECHA en la cabeza (imagen)
+                {
+                    cHandRightOnImageTorso++;
 
-                Log("cHandRightOnImageTorso: " + cHandRightOnImageTorso.ToString());
-                labelCHandRight.Content = cHandRightOnImageTorso.ToString();
-                labelHandRight.Visibility = Visibility.Visible;
-                labelCHandRight.Visibility = Visibility.Visible;
+                    Log("cHandRightOnImageTorso: " + cHandRightOnImageTorso.ToString());
+                    labelCHandRight.Content = cHandRightOnImageTorso.ToString();
+                    labelHandRight.Visibility = Visibility.Visible;
+                    labelCHandRight.Visibility = Visibility.Visible;
 
-                cHandLeftOnImageTorso = 0;
-                cHandRightOnImageHead = 0;
-                cHandLeftOnImageHead  = 0;
-                cHandRightOnImageLegs = 0;
-                cHandLeftOnImageLegs  = 0;
-            }
+                    cHandLeftOnImageTorso = 0;
+                    cHandRightOnImageHead = 0;
+                    cHandLeftOnImageHead  = 0;
+                    cHandRightOnImageLegs = 0;
+                    cHandLeftOnImageLegs  = 0;
+                }
 
-            if (handOnImage(imageTorso, ellipseHandLeft)) //MANO DERECHA en la cabeza (imagen)
-            {
-                cHandLeftOnImageTorso++;
+                if (handOnImage(imageTorso, ellipseHandLeft) && Canvas.GetLeft(imageTorso) == 50 && Canvas.GetTop(imageTorso) == 394) //MANO DERECHA en la cabeza (imagen)
+                {
+                    cHandLeftOnImageTorso++;
 
-                Log("cHandLeftOnImageTorso: " + cHandLeftOnImageTorso.ToString());
-                labelCHandLeft.Content = cHandLeftOnImageTorso.ToString();
-                labelHandLeft.Visibility = Visibility.Visible;
-                labelCHandLeft.Visibility = Visibility.Visible;
+                    Log("cHandLeftOnImageTorso: " + cHandLeftOnImageTorso.ToString());
+                    labelCHandLeft.Content = cHandLeftOnImageTorso.ToString();
+                    labelHandLeft.Visibility = Visibility.Visible;
+                    labelCHandLeft.Visibility = Visibility.Visible;
 
-                cHandRightOnImageTorso = 0;
-                cHandRightOnImageHead  = 0;
-                cHandLeftOnImageHead   = 0;
-                cHandRightOnImageLegs  = 0;
-                cHandLeftOnImageLegs   = 0;
-            }
+                    cHandRightOnImageTorso = 0;
+                    cHandRightOnImageHead  = 0;
+                    cHandLeftOnImageHead   = 0;
+                    cHandRightOnImageLegs  = 0;
+                    cHandLeftOnImageLegs   = 0;
+                }
             #endregion
 
             #region LEGS_IMAGE
-            if (handOnImage(imageLegs, ellipseHandRight)) //MANO DERECHA en la cabeza (imagen)
-            {
-                cHandRightOnImageLegs++;
+                if (handOnImage(imageLegs, ellipseHandRight) && Canvas.GetLeft(imageLegs) == 50 && Canvas.GetTop(imageLegs) == 206) //MANO DERECHA en la cabeza (imagen)
+                {
+                    cHandRightOnImageLegs++;
 
-                Log("cHandRightOnImageLegs: " + cHandRightOnImageLegs.ToString());
-                labelCHandRight.Content = cHandRightOnImageLegs.ToString();
-                labelHandRight.Visibility = Visibility.Visible;
-                labelCHandRight.Visibility = Visibility.Visible;
+                    Log("cHandRightOnImageLegs: " + cHandRightOnImageLegs.ToString());
+                    labelCHandRight.Content = cHandRightOnImageLegs.ToString();
+                    labelHandRight.Visibility = Visibility.Visible;
+                    labelCHandRight.Visibility = Visibility.Visible;
 
-                cHandLeftOnImageLegs   = 0;
-                cHandRightOnImageHead  = 0;
-                cHandLeftOnImageHead   = 0;
-                cHandRightOnImageTorso = 0;
-                cHandLeftOnImageTorso  = 0;
-            }
+                    cHandLeftOnImageLegs   = 0;
+                    cHandRightOnImageHead  = 0;
+                    cHandLeftOnImageHead   = 0;
+                    cHandRightOnImageTorso = 0;
+                    cHandLeftOnImageTorso  = 0;
+                }
 
-            if (handOnImage(imageLegs, ellipseHandLeft)) //MANO DERECHA en la cabeza (imagen)
-            {
-                cHandLeftOnImageLegs++;
+                if (handOnImage(imageLegs, ellipseHandLeft) && Canvas.GetLeft(imageLegs) == 50 && Canvas.GetTop(imageLegs) == 206) //MANO DERECHA en la cabeza (imagen)
+                {
+                    cHandLeftOnImageLegs++;
 
-                Log("cHandLeftOnImageLegs: " + cHandLeftOnImageLegs.ToString());
-                labelCHandLeft.Content = cHandLeftOnImageLegs.ToString();
-                labelHandLeft.Visibility = Visibility.Visible;
-                labelCHandLeft.Visibility = Visibility.Visible;
+                    Log("cHandLeftOnImageLegs: " + cHandLeftOnImageLegs.ToString());
+                    labelCHandLeft.Content = cHandLeftOnImageLegs.ToString();
+                    labelHandLeft.Visibility = Visibility.Visible;
+                    labelCHandLeft.Visibility = Visibility.Visible;
 
-                cHandRightOnImageLegs  = 0;
-                cHandRightOnImageHead  = 0;
-                cHandLeftOnImageHead   = 0;
-                cHandRightOnImageTorso = 0;
-                cHandLeftOnImageTorso  = 0;
-            }
+                    cHandRightOnImageLegs  = 0;
+                    cHandRightOnImageHead  = 0;
+                    cHandLeftOnImageHead   = 0;
+                    cHandRightOnImageTorso = 0;
+                    cHandLeftOnImageTorso  = 0;
+                }
             #endregion
         }
 
@@ -363,10 +351,13 @@ namespace LBG
                         {
                             labelResult2.Content = "BIEN";
                             labelResult2.Visibility = Visibility.Visible;
-                            imageHeadInBody.Visibility = Visibility.Visible;
-                            imageHead.Visibility = Visibility.Hidden;
+                            //imageHeadInBody.Visibility = Visibility.Visible;
+                            //imageHead.Visibility = Visibility.Hidden;
+                            Canvas.SetLeft(imageHead, 523);
+                            Canvas.SetTop(imageHead, 151);
                             cheersSound.Play();
 
+                            cHandRightOnHead  = 0;
                             cHandLeftOnHead   = 0;
                             cHandRightOnTorso = 0; 
                             cHandLeftOnTorso  = 0;
@@ -406,10 +397,13 @@ namespace LBG
                     {
                         labelResult2.Content = "BIEN";
                         labelResult2.Visibility = Visibility.Visible;
-                        imageHeadInBody.Visibility = Visibility.Visible;
-                        imageHead.Visibility = Visibility.Hidden;
+                        //imageHeadInBody.Visibility = Visibility.Visible;
+                        //imageHead.Visibility = Visibility.Hidden;
+                        Canvas.SetLeft(imageHead, 523);
+                        Canvas.SetTop(imageHead, 151);
                         cheersSound.Play();
 
+                        cHandLeftOnHead   = 0;
                         cHandRightOnHead  = 0;
                         cHandRightOnTorso = 0; 
                         cHandLeftOnTorso  = 0;
@@ -451,11 +445,14 @@ namespace LBG
                     {
                         labelResult2.Content = "BIEN";
                         labelResult2.Visibility = Visibility.Visible;
-                        imageTorsoInBody.Visibility = Visibility.Visible;
-                        imageTorso.Visibility = Visibility.Hidden;
+                        //imageTorsoInBody.Visibility = Visibility.Visible;
+                        //imageTorso.Visibility = Visibility.Hidden;
 
+                        Canvas.SetLeft(imageTorso, 454);
+                        Canvas.SetTop(imageTorso, 301);
                         cheersSound.Play();
 
+                        cHandRightOnTorso = 0;
                         cHandLeftOnTorso = 0;
                         cHandRightOnHead = 0;
                         cHandLeftOnHead  = 0;
@@ -495,10 +492,13 @@ namespace LBG
                         {
                             labelResult2.Content = "BIEN";
                             labelResult2.Visibility = Visibility.Visible;
-                            imageTorsoInBody.Visibility = Visibility.Visible;
-                            imageTorso.Visibility = Visibility.Hidden;
+                            //imageTorsoInBody.Visibility = Visibility.Visible;
+                            //imageTorso.Visibility = Visibility.Hidden;
+                            Canvas.SetLeft(imageTorso, 454);
+                            Canvas.SetTop(imageTorso, 301);
                             cheersSound.Play();
 
+                            cHandLeftOnTorso  = 0;
                             cHandRightOnTorso = 0;
                             cHandRightOnHead  = 0;
                             cHandLeftOnHead   = 0;
@@ -547,10 +547,13 @@ namespace LBG
                         {
                             labelResult2.Content = "BIEN";
                             labelResult2.Visibility = Visibility.Visible;
-                            imageLegsInBody.Visibility = Visibility.Visible;
-                            imageLegs.Visibility = Visibility.Hidden;
+                            //imageLegsInBody.Visibility = Visibility.Visible;
+                            //imageLegs.Visibility = Visibility.Hidden;
+                            Canvas.SetLeft(imageLegs,498);
+                            Canvas.SetTop(imageLegs,533);
                             cheersSound.Play();
 
+                            cHandRightOnLegs   = 0;
                             cHandLeftOnLegs    = 0;
                             cHandRightOnHead   = 0;
                             cHandLeftOnHead    = 0;
@@ -595,10 +598,13 @@ namespace LBG
                         {
                             labelResult2.Content = "BIEN";
                             labelResult2.Visibility = Visibility.Visible;
-                            imageLegsInBody.Visibility = Visibility.Visible;
-                            imageLegs.Visibility = Visibility.Hidden;
-                            cheersSound.Play();
+                            //imageLegsInBody.Visibility = Visibility.Visible;
+                            //imageLegs.Visibility = Visibility.Hidden;
+                            Canvas.SetLeft(imageLegs,498);
+                            Canvas.SetTop(imageLegs,533);
+                            cheersSound.Play();       
                             
+                            cHandLeftOnLegs    = 0;                     
                             cHandRightOnLegs   = 0;
                             cHandRightOnHead   = 0;
                             cHandLeftOnHead    = 0;
