@@ -19,12 +19,12 @@
             <Image x:Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoyWhiteSix.png" HorizontalAlignment="Left" Width="390" Margin="450,146,0,0" Height="513" VerticalAlignment="Top" />
 
             <!--Images in space-->
-            <Image Name ="imageHead" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png" Height="268" Width="271" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="840" Canvas.Top="475"/>
-            <Image Name ="imageTorsoWithoutHands" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentTorsoWithoutHands.png" Height="194" Width="201" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="186" Canvas.Top="522"/>
-            <Image Name ="imageLeftLeg" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLeftLeg.png" Height="152" Width="156" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="1076" Canvas.Top="318"/>
-            <Image Name ="imageRightLeg" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentRightLeg.png" Height="144" Width="144" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="240" Canvas.Top="201"/>
-            <Image Name ="imageLefHand" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLeftHand.png" Height="137" Width="135" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="870" Canvas.Top="166"/>
-            <Image Name ="imageRightHand" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentRightHand.png" Height="128" Width="133" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="76" Canvas.Top="362"/>
+            <Image Name ="imageHead" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png" Height="268" Width="271" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="816" Canvas.Top="475"/>
+            <Image Name ="imageTorsoWithoutHands" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentTorsoWithoutHands.png" Height="194" Width="201" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="240" Canvas.Top="524"/>
+            <Image Name ="imageLeftLeg" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLeftLeg.png" Height="152" Width="156" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="1117" Canvas.Top="309"/>
+            <Image Name ="imageRightLeg" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentRightLeg.png" Height="144" Width="144" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="243" Canvas.Top="165"/>
+            <Image Name ="imageLefHand" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLeftHand.png" Height="137" Width="135" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="840" Canvas.Top="165"/>
+            <Image Name ="imageRightHand" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentRightHand.png" Height="128" Width="133" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="38" Canvas.Top="348"/>
 
             <!--Images in body-->
             <Image Name ="imageHeadInBody" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png" Height="268" Width="271" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="517" Canvas.Top="134"/>
@@ -33,7 +33,7 @@
             <Image Name ="imageRightLegInBody" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentRightLeg.png" Height="144" Width="144" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="642" Canvas.Top="524"/>
             <Image Name ="imageLefHandInBody" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLeftHand.png" Height="143" Width="115" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="450" Canvas.Top="282"/>
             <Image Name ="imageRightHandInBody" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentRightHand.png" Height="134" Width="123" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="723" Canvas.Top="316"/>
-            
+
             <!--Texts-->
             <Label Name="labelHandRight" TextElement.FontSize="40" Content="Derecha" Visibility="Hidden" Canvas.Left="1058" Canvas.Top="246" />
             <Label Name="labelHandLeft" TextElement.FontSize="40" Content="Izquierda" Visibility="Hidden" Canvas.Left="1040" Canvas.Top="178" />
