@@ -104,6 +104,9 @@
     <Compile Include="UI_GameThreePieces.xaml.cs">
       <DependentUpon>UI_GameThreePieces.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI_GameThreePiecesWithHelp.xaml.cs">
+      <DependentUpon>UI_GameThreePiecesWithHelp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI_MainMenu.xaml.cs">
       <DependentUpon>UI_MainMenu.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI_GameThreePieces.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI_GameThreePiecesWithHelp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -205,6 +212,9 @@
     <Resource Include="Images\handRight.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Body_Parts\headRed.png" />
+    <Resource Include="Images\Body_Parts\legsRed.png" />
+    <Resource Include="Images\Body_Parts\torsoRed.png" />
     <Content Include="Sounds\cheers.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
