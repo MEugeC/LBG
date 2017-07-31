@@ -168,8 +168,8 @@ namespace LBG
 
             #region HEAD_IMAGE
             if (handOnImage(imageHead, ellipseHandRight) && 
-                Canvas.GetLeft(imageHead) == 964 && 
-                Canvas.GetTop(imageHead) == 324) //MANO DERECHA en la cabeza (imagen)
+                Canvas.GetLeft(imageHead) == 960 && 
+                Canvas.GetTop(imageHead) == 301) //MANO DERECHA en la cabeza (imagen)
             {
                 cHandRightOnImageHead++;
 
@@ -186,8 +186,8 @@ namespace LBG
             }
 
             if (handOnImage(imageHead, ellipseHandLeft) && 
-                Canvas.GetLeft(imageHead) == 964 && 
-                Canvas.GetTop(imageHead) == 324) //MANO IZQUIERDA en la cabeza (imagen)
+                Canvas.GetLeft(imageHead) == 960 && 
+                Canvas.GetTop(imageHead) == 301) //MANO IZQUIERDA en la cabeza (imagen)
             {
                 cHandLeftOnImageHead++;
 
@@ -206,8 +206,8 @@ namespace LBG
 
             #region TORSO_IMAGE
             if (handOnImage(imageTorso, ellipseHandRight) && 
-                Canvas.GetLeft(imageTorso) == 50 && 
-                Canvas.GetTop(imageTorso) == 394) //MANO DERECHA en la cabeza (imagen)
+                Canvas.GetLeft(imageTorso) == 64 && 
+                Canvas.GetTop(imageTorso) == 420) //MANO DERECHA en la cabeza (imagen)
             {
                 cHandRightOnImageTorso++;
 
@@ -224,8 +224,8 @@ namespace LBG
             }
 
             if (handOnImage(imageTorso, ellipseHandLeft) && 
-                Canvas.GetLeft(imageTorso) == 50 && 
-                Canvas.GetTop(imageTorso) == 394) //MANO DERECHA en la cabeza (imagen)
+                Canvas.GetLeft(imageTorso) == 64 && 
+                Canvas.GetTop(imageTorso) == 420) //MANO DERECHA en la cabeza (imagen)
             {
                 cHandLeftOnImageTorso++;
 
@@ -244,8 +244,8 @@ namespace LBG
 
             #region LEGS_IMAGE
             if (handOnImage(imageLegs, ellipseHandRight) && 
-                Canvas.GetLeft(imageLegs) == 50 && 
-                Canvas.GetTop(imageLegs) == 206) //MANO DERECHA en la cabeza (imagen)
+                Canvas.GetLeft(imageLegs) == 92 && 
+                Canvas.GetTop(imageLegs) == 193) //MANO DERECHA en la cabeza (imagen)
             {
                 cHandRightOnImageLegs++;
 
@@ -357,11 +357,11 @@ namespace LBG
                             cHandLeftOnLegs = 0;
                         }
 
-                        if (cHandRightOnHead == 10)
+                        if (cHandRightOnHead == 5)
                         {
                             labelResult2.Content = "BIEN";
                             labelResult2.Visibility = Visibility.Visible;
-                            Canvas.SetLeft(imageHead, 523);
+                            Canvas.SetLeft(imageHead, 540);
                             Canvas.SetTop(imageHead, 151);
                             imageHeadInBodyHelp.Visibility = Visibility.Hidden;
 
@@ -405,12 +405,12 @@ namespace LBG
                             cHandLeftOnLegs = 0;
                         }
 
-                        if (cHandLeftOnHead == 10)
+                        if (cHandLeftOnHead == 5)
                         {
                             labelResult2.Content = "BIEN";
                             labelResult2.Visibility = Visibility.Visible;
 
-                            Canvas.SetLeft(imageHead, 523);
+                            Canvas.SetLeft(imageHead, 540);
                             Canvas.SetTop(imageHead, 151);
                             imageHeadInBodyHelp.Visibility = Visibility.Hidden;
 
@@ -456,13 +456,13 @@ namespace LBG
                             cHandLeftOnLegs = 0;
                         }
 
-                        if (cHandRightOnTorso == 10)
+                        if (cHandRightOnTorso == 5)
                         {
                             labelResult2.Content = "BIEN";
                             labelResult2.Visibility = Visibility.Visible;
 
-                            Canvas.SetLeft(imageTorso, 454);
-                            Canvas.SetTop(imageTorso, 301);
+                            Canvas.SetLeft(imageTorso, 473);
+                            Canvas.SetTop(imageTorso, 324);
                             imageTorsoInBodyHelp.Visibility = Visibility.Hidden;
   
                             cheersSound.Play();
@@ -505,13 +505,13 @@ namespace LBG
                             cHandLeftOnLegs = 0;
                         }
 
-                        if (cHandLeftOnTorso == 10)
+                        if (cHandLeftOnTorso == 5)
                         {
                             labelResult2.Content = "BIEN";
                             labelResult2.Visibility = Visibility.Visible;
 
-                            Canvas.SetLeft(imageTorso, 454);
-                            Canvas.SetTop(imageTorso, 301);
+                            Canvas.SetLeft(imageTorso, 473);
+                            Canvas.SetTop(imageTorso, 324);
                             imageTorsoInBodyHelp.Visibility = Visibility.Hidden;
                             cheersSound.Play();
 
@@ -562,12 +562,12 @@ namespace LBG
                             cHandLeftOnTorso = 0;
                         }
 
-                        if (cHandRightOnLegs == 10)
+                        if (cHandRightOnLegs == 5)
                         {
                             labelResult2.Content = "BIEN";
                             labelResult2.Visibility = Visibility.Visible;
-                            Canvas.SetLeft(imageLegs, 498);
-                            Canvas.SetTop(imageLegs, 533);
+                            Canvas.SetLeft(imageLegs, 523);
+                            Canvas.SetTop(imageLegs, 580);
                             imageLegsInBodyHelp.Visibility = Visibility.Hidden;
 
                             cheersSound.Play();
@@ -613,12 +613,12 @@ namespace LBG
                             cHandLeftOnTorso = 0;
                         }
 
-                        if (cHandLeftOnLegs == 10)
+                        if (cHandLeftOnLegs == 5)
                         {
                             labelResult2.Content = "BIEN";
                             labelResult2.Visibility = Visibility.Visible;
-                            Canvas.SetLeft(imageLegs, 498);
-                            Canvas.SetTop(imageLegs, 533);
+                            Canvas.SetLeft(imageLegs, 523);
+                            Canvas.SetTop(imageLegs, 580);
                             imageLegsInBodyHelp.Visibility = Visibility.Hidden;
                             cheersSound.Play();
 
@@ -686,8 +686,8 @@ namespace LBG
         {
             mKinect.Stop();
             Log("GOING BACK");
-            UI_GameOne game1 = new UI_GameOne();
-            game1.Show();
+            UI_MainMenu main = new UI_MainMenu();
+            main.Show();
             this.Close();
         }
 

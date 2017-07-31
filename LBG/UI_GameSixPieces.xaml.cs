@@ -1340,8 +1340,8 @@ namespace LBG
         {
             mKinect.Stop();
             Log("GOING BACK");
-            UI_GameOne game1 = new UI_GameOne();
-            game1.Show();
+            UI_MainMenu main = new UI_MainMenu();
+            main.Show();
             this.Close();
         }
 

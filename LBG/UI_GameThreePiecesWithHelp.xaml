@@ -25,9 +25,9 @@
             <Image Name="imageLegs" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLegs.png"  Canvas.Left="92" Canvas.Top="193" Height="140" Width="323" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
             <!--Images in body Help-->
-            <Image Name="imageHeadInBodyHelp" Stretch="UniformToFill" Source="Images/Body_Parts/headRed.png"  Canvas.Left="542" Canvas.Top="152" Height="279" Width="281"  HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-            <Image Name="imageTorsoInBodyHelp" Stretch="UniformToFill" Source="Images/Body_Parts/torsoRed.png"  Canvas.Left="475" Canvas.Top="323" Height="275" Width="429" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-            <Image x:Name="imageLegsInBodyHelp" Stretch="UniformToFill" Source="Images/Body_Parts/legsRed.png"  Canvas.Left="523" Canvas.Top="581" Height="140" Width="323" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+            <Image Name="imageHeadInBodyHelp" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\headRed.png"  Canvas.Left="540" Canvas.Top="151" Height="279" Width="281" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+            <Image Name="imageTorsoInBodyHelp" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\torsoRed.png"  Canvas.Left="473" Canvas.Top="324" Height="275" Width="429" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+            <Image Name="imageLegsInBodyHelp" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\legsRed.png"  Canvas.Left="523" Canvas.Top="580" Height="140" Width="323" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
 
             <!--Texts-->
             <Label Name="labelHandRight" TextElement.FontSize="40" Content="Derecha" Visibility="Hidden" Canvas.Left="1058" Canvas.Top="246" />
