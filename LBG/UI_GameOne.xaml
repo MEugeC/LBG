@@ -18,12 +18,12 @@
                     <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\back.png" Height="109" Width="109" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </k:KinectTileButton>
 
-                <k:KinectTileButton Click="btn_threePieces" Foreground="Green" Margin="38,319,845,158" Height="Auto" Width="Auto" BorderBrush="{x:Null}" Background="{x:Null}" LabelBackground="{x:Null}">
-                    <Image Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Buttons\btn_threePieces.png" Height="450" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <k:KinectTileButton Click="btn_threePieces" Foreground="Green" Margin="124,355,933,158" Height="Auto" Width="Auto" BorderBrush="Yellow" Background="Yellow" Label=" Without Help">
+                    <!--<Image Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Buttons\btn_threePieces.png" Height="450" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
                 </k:KinectTileButton>
 
-                <k:KinectTileButton Click="btn_sixPieces" Foreground="Green" Margin="842,319,41,158" Height="Auto" Width="Auto" BorderBrush="{x:Null}" Background="{x:Null}" LabelBackground="{x:Null}">
-                    <Image Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Buttons\btn_sixPieces.png" Height="450" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <k:KinectTileButton Click="btn_sixPieces" Foreground="Green" Margin="974,367,85,158" Height="Auto" Width="Auto" BorderBrush="Orange" Background="Orange" Label="With Help">
+                    <!--<Image Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Buttons\btn_sixPieces.png" Height="450" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
                 </k:KinectTileButton>
 
             </Grid>

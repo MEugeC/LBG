@@ -88,13 +88,15 @@ namespace LBG
             miKinect.Stop();
             UI_GameOne game1 = new UI_GameOne();
             game1.Show();
-            //MessageBox.Show("Bien Hecho");
             this.Close();
         }
 
         private void btn_gameTwo(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show("VA AL SEGUNDO JUEGO");
+            miKinect.Stop();
+            UI_GameSixPieces game2 = new UI_GameSixPieces();
+            game2.Show();
+            this.Close();
         }
     }
 }
