@@ -84,14 +84,29 @@ namespace LBG
 
         private void btn_gameOne(object sender, RoutedEventArgs e)
         {
-            cheersSound.Play();
             miKinect.Stop();
-            UI_GameOne game1 = new UI_GameOne();
+            UI_GameThreePieces game1 = new UI_GameThreePieces();
             game1.Show();
             this.Close();
         }
 
         private void btn_gameTwo(object sender, RoutedEventArgs e)
+        {
+            miKinect.Stop();
+            UI_GameThreePiecesWithHelp game2 = new UI_GameThreePiecesWithHelp();
+            game2.Show();
+            this.Close();
+        }
+
+        private void btn_gameThree(object sender, RoutedEventArgs e)
+        {
+            miKinect.Stop();
+            UI_GameSixPiecesWithHelp game2 = new UI_GameSixPiecesWithHelp();
+            game2.Show();
+            this.Close();
+        }
+
+        private void btn_gameFour(object sender, RoutedEventArgs e)
         {
             miKinect.Stop();
             UI_GameSixPieces game2 = new UI_GameSixPieces();

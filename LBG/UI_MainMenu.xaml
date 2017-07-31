@@ -11,14 +11,24 @@
     <Grid Name="MainGrid">
         <k:KinectRegion Name="ZonaCursor" Margin="10,0,-10,0">
             <Grid Margin="0,-10,0,10">
-                <Image x:Name="image1" Stretch="Fill"   Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\mainTitle.png" HorizontalAlignment="Left" Width="983" RenderTransformOrigin="0.5,0.5" Margin="142,10,0,508" />
+                <Image x:Name="image1" Stretch="Fill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\mainTitle.png" HorizontalAlignment="Left" Width="983" RenderTransformOrigin="0.5,0.5" Margin="142,15,0,503" />
 
-                <k:KinectTileButton Click="btn_gameOne" Foreground="Green" Margin="190,335,817,166" Height="Auto" Width="Auto" BorderBrush="Green" Background="Green" Label="Game One">
-                    <!--<Image Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Buttons\btn_gameOne.png" Height="450" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+                <Image x:Name="boy" Stretch="Fill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoy.png" HorizontalAlignment="Left" Width="388" RenderTransformOrigin="0.5,0.5" Margin="452,230,0,43" />
+
+                <k:KinectTileButton Click="btn_gameOne" Foreground="{x:Null}" Margin="142,250,962,303" Height="200" Width="200" BorderBrush="{x:Null}" Background="{x:Null}" LabelBackground="{x:Null}">
+                    <Image Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Buttons\1.png" Height="200" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </k:KinectTileButton>
 
-                <k:KinectTileButton Click="btn_gameTwo" Foreground="Green" Margin="836,335,179,166" Height="Auto" Width="Auto" BorderBrush="Red" Background="Red" Label="Game Two">
-                    <!--<Image Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Buttons\btn_gameTwo.png" Height="450" Width="450" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+                <k:KinectTileButton Click="btn_gameTwo" Foreground="Green" Margin="142,480,962,73" Height="200" Width="200" BorderBrush="{x:Null}" Background="{x:Null}" LabelBackground="{x:Null}">
+                    <Image Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Buttons\2.png" Height="200" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </k:KinectTileButton>
+
+                <k:KinectTileButton Click="btn_gameThree" Foreground="{x:Null}" Margin="925,250,179,303" Height="200" Width="200" BorderBrush="{x:Null}" Background="{x:Null}" LabelBackground="{x:Null}">
+                    <Image Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Buttons\3.png" Height="200" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </k:KinectTileButton>
+
+                <k:KinectTileButton Click="btn_gameFour" Foreground="Green" Margin="925,480,179,73" Height="200" Width="200" BorderBrush="{x:Null}" Background="{x:Null}" LabelBackground="{x:Null}">
+                    <Image Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Buttons\4.png" Height="200" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </k:KinectTileButton>
 
             </Grid>

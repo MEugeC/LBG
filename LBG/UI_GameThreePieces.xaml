@@ -13,21 +13,16 @@
             <!--<k:KinectRegion Name="ZonaCursor" Margin="10,-10,-10,0" Grid.ColumnSpan="2">-->
             <!--Titles-->
             <Image x:Name="image1" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\title_gameOne.png" Height="201" HorizontalAlignment="Left" VerticalAlignment="Top" Width="950" Margin="186,0,0,0" />
-            <k:KinectTileButton Click="btn_back" Foreground="{x:Null}" Margin="38,46,1157,587" BorderBrush="{x:Null}" Height="109" Width="109" Background="{x:Null}" LabelBackground="{x:Null}">
-                <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\back.png" Height="109" Width="109" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <k:KinectTileButton Click="btn_back" Foreground="{x:Null}" BorderBrush="{x:Null}" Height="115" Width="115" Background="{x:Null}" LabelBackground="{x:Null}" Canvas.Left="35" Canvas.Top="35">
+                <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\home-icon.png" Height="115" Width="115" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </k:KinectTileButton>
 
-            <Image x:Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoyWhite.png" HorizontalAlignment="Left" Width="390" Margin="450,146,0,0" Height="513" VerticalAlignment="Top" />
+            <Image x:Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoyBlack3.png" HorizontalAlignment="Left" Width="425" Height="569" VerticalAlignment="Top" Canvas.Left="475" Canvas.Top="151" />
 
             <!--Images in space-->
-            <Image Name="imageHead" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png"  Canvas.Left="964" Canvas.Top="324" Height="268" Width="271" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Image Name="imageTorso" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentTorso.png"  Canvas.Left="50" Canvas.Top="394" Height="265" Width="400" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Image Name="imageLegs" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLegs.png"  Canvas.Left="50" Canvas.Top="206" Height="124" Width="284" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
-            <!--Images in body-->
-            <Image Name="imageHeadInBody" Stretch="UniformToFill" Source="Images/Body_Parts/transparentHead.png"  Canvas.Left="523" Canvas.Top="151" Height="248" Width="253" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-            <Image Name="imageTorsoInBody" Stretch="UniformToFill" Source="Images/Body_Parts/transparentTorso.png"  Canvas.Left="454" Canvas.Top="301" Height="250" Width="392" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-            <Image x:Name="imageLegsInBody" Stretch="UniformToFill" Source="Images/Body_Parts/transparentLegs.png"  Canvas.Left="498" Canvas.Top="533" Height="124" Width="284" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+            <Image Name="imageHead" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png"  Canvas.Left="960" Canvas.Top="301" Height="279" Width="281" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Image Name="imageTorso" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentTorso.png"  Canvas.Left="64" Canvas.Top="420" Height="275" Width="429" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Image Name="imageLegs" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLegs.png"  Canvas.Left="92" Canvas.Top="193" Height="140" Width="323" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
             <!--Texts-->
             <Label Name="labelHandRight" TextElement.FontSize="40" Content="Derecha" Visibility="Hidden" Canvas.Left="1058" Canvas.Top="246" />

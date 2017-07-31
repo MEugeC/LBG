@@ -12,19 +12,19 @@
         <Canvas Name ="MainCanvas" Width="1312" Margin="0,0,-8,0" >
             <!--Titles-->
             <Image x:Name="image1" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\title_gameOne.png" Height="201" HorizontalAlignment="Left" VerticalAlignment="Top" Width="950" Margin="186,0,0,0" />
-            <k:KinectTileButton Click="btn_back" Foreground="{x:Null}" Margin="38,46,1157,587" BorderBrush="{x:Null}" Height="109" Width="109" Background="{x:Null}" LabelBackground="{x:Null}">
-                <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\back.png" Height="109" Width="109" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <k:KinectTileButton Click="btn_back" Foreground="{x:Null}" BorderBrush="{x:Null}" Height="115" Width="115" Background="{x:Null}" LabelBackground="{x:Null}" Canvas.Left="35" Canvas.Top="35">
+                <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\home-icon.png" Height="115" Width="115" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </k:KinectTileButton>
 
-            <Image x:Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoyWhiteSix.png" HorizontalAlignment="Left" Width="323" Height="427" VerticalAlignment="Top" Canvas.Left="488" Canvas.Top="201" />
+            <Image x:Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoyBlack6.png" HorizontalAlignment="Left" Width="327" Height="439" VerticalAlignment="Top" Canvas.Left="488" Canvas.Top="201" />
 
             <!--Images in space-->
-            <Image Name ="imageHead" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png" Height="220" Width="222" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="870" Canvas.Top="446" RenderTransformOrigin="-0.554,-0.53"/>
-            <Image Name ="imageTorsoWithoutHands" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentTorsoWithoutHands.png" Height="150" Width="157" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="240" Canvas.Top="516"/>
-            <Image Name ="imageLeftLeg" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLeftLeg.png" Height="104" Width="129" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="1058" Canvas.Top="283"/>
-            <Image Name ="imageRightLeg" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentRightLeg.png" Height="130" Width="118" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="243" Canvas.Top="178" RenderTransformOrigin="2.84,2.299"/>
-            <Image Name ="imageLeftHand" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLeftHand.png" Height="97" Width="107" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="793" Canvas.Top="154"/>
-            <Image Name ="imageRightHand" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentRightHand.png" Height="108" Width="101" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="108" Canvas.Top="340"/>
+            <Image Name ="imageHead" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png" Height="220" Width="222" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="878" Canvas.Top="455" RenderTransformOrigin="-0.554,-0.53"/>
+            <Image Name ="imageTorsoWithoutHands" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentTorsoWithoutHands.png" Height="150" Width="157" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="83" Canvas.Top="490"/>
+            <Image Name ="imageLeftLeg" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLeftLeg.png" Height="104" Width="144" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="790" Canvas.Top="152"/>
+            <Image Name ="imageRightLeg" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentRightLeg.png" Height="118" Width="130" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="110" Canvas.Top="178" RenderTransformOrigin="2.84,2.299"/>
+            <Image Name ="imageLeftHand" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLeftHand.png" Height="92" Width="111" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="1102" Canvas.Top="314"/>
+            <Image Name ="imageRightHand" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentRightHand.png" Height="108" Width="101" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="324" Canvas.Top="347"/>
 
             <!--Images in body-->
             <!--<Image Name ="imageHeadB" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png" Height="220" Width="222" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="540" Canvas.Top="194" RenderTransformOrigin="-0.554,-0.53"/>

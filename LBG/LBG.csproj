@@ -101,6 +101,9 @@
     <Compile Include="UI_GameSixPieces.xaml.cs">
       <DependentUpon>UI_GameSixPieces.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI_GameSixPiecesWithHelp.xaml.cs">
+      <DependentUpon>UI_GameSixPiecesWithHelp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI_GameThreePieces.xaml.cs">
       <DependentUpon>UI_GameThreePieces.xaml</DependentUpon>
     </Compile>
@@ -115,6 +118,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI_GameSixPieces.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI_GameSixPiecesWithHelp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,19 +190,6 @@
     <Resource Include="Images\Titles\title_gameOne.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Body_Parts\transparentBoy.png" />
-    <Resource Include="Images\Body_Parts\transparentHead.png" />
-    <Resource Include="Images\Body_Parts\transparentLeftHand.png" />
-    <Resource Include="Images\Body_Parts\transparentLeftLeg.png" />
-    <Resource Include="Images\Body_Parts\transparentRightHand.png" />
-    <Resource Include="Images\Body_Parts\transparentRightLeg.png" />
-    <Resource Include="Images\Body_Parts\transparentTorso.png" />
-    <Resource Include="Images\Body_Parts\transparentTorsoWithoutHands.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Body_Parts\transparentLegs.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\back_icon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -212,9 +206,31 @@
     <Resource Include="Images\handRight.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Buttons\1.png" />
+    <Resource Include="Images\Buttons\2.png" />
+    <Resource Include="Images\Buttons\3.png" />
+    <Resource Include="Images\Buttons\4.png" />
+    <Resource Include="Images\Body_Parts\transparentBoy.png" />
+    <Resource Include="Images\Body_Parts\transparentBoyBlack3.png" />
+    <Resource Include="Images\Body_Parts\transparentHead.png" />
+    <Resource Include="Images\Body_Parts\transparentLegs.png" />
+    <Resource Include="Images\Body_Parts\transparentTorso.png" />
+    <Resource Include="Images\home-icon.png" />
+    <Resource Include="Images\Body_Parts\transparentLeftHand.png" />
+    <Resource Include="Images\Body_Parts\transparentLeftLeg.png" />
+    <Resource Include="Images\Body_Parts\transparentRightHand.png" />
+    <Resource Include="Images\Body_Parts\transparentRightLeg.png" />
+    <Resource Include="Images\Body_Parts\transparentTorsoWithoutHands.png" />
+    <Resource Include="Images\Body_Parts\transparentBoyBlack6.png" />
     <Resource Include="Images\Body_Parts\headRed.png" />
+    <Resource Include="Images\Body_Parts\leftHandRed.png" />
+    <Resource Include="Images\Body_Parts\leftLegRed.png" />
     <Resource Include="Images\Body_Parts\legsRed.png" />
+    <Resource Include="Images\Body_Parts\rightHandRed.png" />
+    <Resource Include="Images\Body_Parts\rightLegRed.png" />
     <Resource Include="Images\Body_Parts\torsoRed.png" />
+    <Resource Include="Images\Body_Parts\torsoWithoutHandsRed.png" />
+    <Resource Include="Images\Titles\finish.png" />
     <Content Include="Sounds\cheers.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
