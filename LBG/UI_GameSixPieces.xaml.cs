@@ -1,13 +1,12 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
+using System.Media;
 using System.Windows;
+using System.Windows.Controls;
 using Microsoft.Kinect;
 using Microsoft.Kinect.Toolkit;
-using System.Linq;
-using System.Threading;
-using System.IO;
-using System.Windows.Controls;
 using Coding4Fun.Kinect.Wpf;
-using System.Media;
 
 namespace LBG
 {

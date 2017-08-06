@@ -1,15 +1,12 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
+using System.Media;
 using System.Windows;
+using System.Windows.Controls;
 using Microsoft.Kinect;
 using Microsoft.Kinect.Toolkit;
-using System.Linq;
-using System.Threading;
-using System.IO;
-using System.Windows.Controls;
 using Coding4Fun.Kinect.Wpf;
-using System.Media;
-
-
 
 namespace LBG
 {
@@ -28,16 +25,25 @@ namespace LBG
         int                        cHandRightOnHead       = 0;
         int                        cHandLeftOnImageHead   = 0;
         int                        cHandLeftOnHead        = 0;
+        Boolean                    soundHead              = false;
+        Boolean                    cDateHead              = false;
 
         int                        cHandRightOnImageTorso = 0;
         int                        cHandLeftOnImageTorso  = 0;
         int                        cHandRightOnTorso      = 0;
         int                        cHandLeftOnTorso       = 0;
+        Boolean                    soundTorso             = false;
+        Boolean                    cDateTorso             = false;
 
         int                        cHandRightOnImageLegs  = 0;
         int                        cHandRightOnLegs       = 0;
         int                        cHandLeftOnImageLegs   = 0;
         int                        cHandLeftOnLegs        = 0;
+        Boolean                    soundLegs              = false;
+        Boolean                    cDateLegs              = false;
+
+        int                        cHandRightOnImageHome  = 0;
+        int                        cHandLeftOnImageHome   = 0;
 
         DateTime                   dHandOnImage;
 
@@ -54,7 +60,6 @@ namespace LBG
         public UI_GameThreePieces()
         {
             InitializeComponent();
-            Log("INITIALIZE GAME THREE PIECES");
         }
 
         public static void Log(string logMessage)
@@ -80,22 +85,22 @@ namespace LBG
             MainCanvas.Width = System.Windows.SystemParameters.PrimaryScreenWidth;
 
             mKinect = new KinectSensorChooser();
-            mKinect.KinectChanged += miKinect_KinectChanged; //detecta si un kinect se conecta o esta desconectado, etc... si lo desconectamos nos manda al evento
+            mKinect.KinectChanged += miKinect_KinectChanged; //Detects if the sensor is connected or not.
             sensorChooserUI.KinectSensorChooser = mKinect;
-            mKinect.Start(); //inicializar el kinect
+            mKinect.Start(); //Initialize the sensor.
             Log("Kinect Start");
         }
 
         void miKinect_KinectChanged(object sender, KinectChangedEventArgs e)
         {
-            bool error = true; //verificar si existe algun error
+            bool error = true;
 
-            if (e.OldSensor == null) //esto va de KinectChangedEventArgs, si es null es que lo desconcectamos
+            if (e.OldSensor == null) //NULL = disconnected
             {
                 try
                 {
-                    e.OldSensor.DepthStream.Disable(); //desabilitar la profundidad y el esqueleto
-                    e.OldSensor.SkeletonStream.Disable();
+                    e.OldSensor.DepthStream.Disable(); //Disable depth.
+                    e.OldSensor.SkeletonStream.Disable(); //Disable skeleton.
                 }
                 catch (Exception)
                 {
@@ -103,22 +108,23 @@ namespace LBG
                 }
             }
 
-            if (e.NewSensor == null) //verifico si un nuevo kinect se conecto
+            if (e.NewSensor == null) //Check if a sensor is connected.
                 return;
 
-            try //habilitar la profundidad y esqueletos
+            try //Enable the depth and the skeleton.
             {
                 e.NewSensor.DepthStream.Enable(DepthImageFormat.Resolution640x480Fps30);
                 e.NewSensor.ColorStream.Enable(ColorImageFormat.RgbResolution1280x960Fps12);
-
-                //asigno el formato a la imagen
                 e.NewSensor.SkeletonStream.Enable();
 
                 try
                 {
-                    e.NewSensor.SkeletonStream.TrackingMode = SkeletonTrackingMode.Default; //Default nos permite detectar todas las articulaciones, Seated solo las 10 de arriba. 
-                    e.NewSensor.DepthStream.Range = DepthRange.Near; //para que tenga rango mas cercano solo para kinect windows
-                    e.NewSensor.SkeletonStream.EnableTrackingInNearRange = true; //para el rango cercano de los esqueletos
+                    //Default allows us to detect all joints, Seated only the top 10.
+                    e.NewSensor.SkeletonStream.TrackingMode = SkeletonTrackingMode.Default;
+                    //Closest range only for kinect windows.
+                    e.NewSensor.DepthStream.Range = DepthRange.Near;
+                    //Closest range for the skeleton.
+                    e.NewSensor.SkeletonStream.EnableTrackingInNearRange = true; 
                 }
                 catch (InvalidOperationException)
                 {
@@ -157,8 +163,8 @@ namespace LBG
             {
                 return;
             }
-            //Get a skeleton
-            Skeleton skeleton = GetFirstSkeleton(e);
+            
+            Skeleton skeleton = GetFirstSkeleton(e); //Get a skeleton
 
             if (skeleton == null)
             {
@@ -167,13 +173,14 @@ namespace LBG
 
             GetCameraPoint(skeleton, e);
 
-            ellipseHandLeft.Visibility       = Visibility.Visible; //MANO IZQUIERDA
-            ellipseHandRight.Visibility      = Visibility.Visible; //MANO DERECHA
+            ellipseHandLeft.Visibility  = Visibility.Visible; //Left hand
+            ellipseHandRight.Visibility = Visibility.Visible; //Right hand
 
             #region HEAD_IMAGE
+                //RIGHT HAND to the HEAD (image)
                 if (handOnImage(imageHead, ellipseHandRight) && 
                     Canvas.GetLeft(imageHead) == 960 && 
-                    Canvas.GetTop(imageHead) == 301) //MANO DERECHA en la cabeza (imagen)
+                    Canvas.GetTop(imageHead) == 301) 
                 {
                     cHandRightOnImageHead++;
 
@@ -189,9 +196,10 @@ namespace LBG
                     cHandLeftOnImageTorso  = 0; 
                 }
 
+                //LEFT HAND to the HEAD (image)
                 if (handOnImage(imageHead, ellipseHandLeft) && 
                     Canvas.GetLeft(imageHead) == 960 && 
-                    Canvas.GetTop(imageHead) == 301) //MANO IZQUIERDA en la cabeza (imagen)
+                    Canvas.GetTop(imageHead) == 301) 
                 {
                     cHandLeftOnImageHead++;
 
@@ -209,9 +217,10 @@ namespace LBG
             #endregion
 
             #region TORSO_IMAGE
+                //RIGHT HAND to the TORSO (image)
                 if (handOnImage(imageTorso, ellipseHandRight) && 
                     Canvas.GetLeft(imageTorso) == 64 && 
-                    Canvas.GetTop(imageTorso) == 420) //MANO DERECHA en la cabeza (imagen)
+                    Canvas.GetTop(imageTorso) == 420) 
                 {
                     cHandRightOnImageTorso++;
 
@@ -227,9 +236,10 @@ namespace LBG
                     cHandLeftOnImageLegs  = 0;
                 }
 
+                //LEFT HAND to the HEAD (image)
                 if (handOnImage(imageTorso, ellipseHandLeft) && 
                     Canvas.GetLeft(imageTorso) == 64 && 
-                    Canvas.GetTop(imageTorso) == 420) //MANO DERECHA en la cabeza (imagen)
+                    Canvas.GetTop(imageTorso) == 420) 
                 {
                     cHandLeftOnImageTorso++;
 
@@ -247,9 +257,10 @@ namespace LBG
             #endregion
 
             #region LEGS_IMAGE
+                //RIGHT HAND to the LEGS (image)
                 if (handOnImage(imageLegs, ellipseHandRight) && 
                     Canvas.GetLeft(imageLegs) == 92 && 
-                    Canvas.GetTop(imageLegs) == 193) //MANO DERECHA en la cabeza (imagen)
+                    Canvas.GetTop(imageLegs) == 193)
                 {
                     cHandRightOnImageLegs++;
 
@@ -265,9 +276,10 @@ namespace LBG
                     cHandLeftOnImageTorso  = 0;
                 }
 
+                //LEFT HAND to the LEGS (image)
                 if (handOnImage(imageLegs, ellipseHandLeft) && 
                     Canvas.GetLeft(imageLegs) == 92 && 
-                    Canvas.GetTop(imageLegs) == 193) //MANO DERECHA en la cabeza (imagen)
+                    Canvas.GetTop(imageLegs) == 193) 
                 {
                     cHandLeftOnImageLegs++;
 
@@ -281,6 +293,36 @@ namespace LBG
                     cHandLeftOnImageHead   = 0;
                     cHandRightOnImageTorso = 0;
                     cHandLeftOnImageTorso  = 0;
+                }
+            #endregion
+
+            #region GO_HOME
+                //RIGHT HAND to the HOME (image)
+                if (handOnImage(imageHome, ellipseHandRight))
+                {
+                    cHandRightOnImageHome++;
+
+                    cHandLeftOnImageHead   = 0;
+                    cHandRightOnImageLegs  = 0;
+                    cHandLeftOnImageLegs   = 0;
+                    cHandRightOnImageTorso = 0;
+                    cHandLeftOnImageTorso  = 0; 
+                    cHandRightOnImageHead  = 0;
+                    cHandLeftOnImageHome   = 0;
+                }
+
+                //LEFT HAND to the HOME (image)
+                if (handOnImage(imageHome, ellipseHandLeft))
+                {
+                    cHandLeftOnImageHome++;
+
+                    cHandRightOnImageHead  = 0;
+                    cHandRightOnImageLegs  = 0;
+                    cHandLeftOnImageLegs   = 0;
+                    cHandRightOnImageTorso = 0;
+                    cHandLeftOnImageTorso  = 0;
+                    cHandRightOnImageHead  = 0;
+                    cHandRightOnImageHome   = 0;
                 }
             #endregion
         }
@@ -335,28 +377,30 @@ namespace LBG
 
                 #region HEAD
                     #region HEAD_HAND_RIGHT
-                        if (cHandRightOnImageHead == 10) //MANO DERECHA PASO 10 VECES
+                        //RIGHT HAND in the HEAD 10 times
+                        if (cHandRightOnImageHead == 10) 
                         {
-                            dHandOnImage = DateTime.Now;
                             CameraPosition(ellipseHead, headColorPoint, "HEAD - cHandRightOnImageHead");
                             CameraPosition(ellipseHandRight, rightHandColorPoint, "RIGHT HAND - cHandRightOnImageHead");
-
-                            cHandLeftOnImageHead   = 0;
-                            cHandRightOnImageLegs  = 0;
-                            cHandLeftOnImageLegs   = 0;
-                            cHandRightOnImageTorso = 0;
-                            cHandLeftOnImageTorso  = 0; 
+                            soundHead = true;
                         }
-            
+
+                        if (cHandRightOnImageHead >= 10 && soundHead)
+                        {
+                            dHandOnImage = DateTime.Now;
+                            // headSound.play(); Play HEAD Sound
+                        }
+
+                        if (cHandRightOnImageHead >= 10 && ((DateTime.Now - dHandOnImage).Minutes >= 2) && !cDateHead)
+                        {
+                            // headSound.play(); Play HEAD Sound
+                            cDateHead = true;
+                        }     
+                               
                         if (handOnImage(ellipseHandRight, ellipseHead) && cHandRightOnImageHead >= 10)
                         {
                             cHandRightOnHead++;
                             labelResult.Content = "++: " + cHandRightOnHead;
-                            cHandLeftOnHead   = 0;
-                            cHandRightOnTorso = 0; 
-                            cHandLeftOnTorso  = 0;
-                            cHandRightOnLegs  = 0;
-                            cHandLeftOnLegs   = 0;
                         }
 
                         if (cHandRightOnHead == 5)
@@ -378,7 +422,7 @@ namespace LBG
                     #endregion
 
                     #region HEAD_LEFT_HAND
-                    if (cHandLeftOnImageHead == 10) //MANO DERECHA PASO 10 VECES
+                    if (cHandLeftOnImageHead == 10) 
                     {
                         dHandOnImage = DateTime.Now;
                         CameraPosition(ellipseHead, headColorPoint, "HEAD - cHandRightOnImageHead");
@@ -612,8 +656,30 @@ namespace LBG
                             cHandRightOnTorso  = 0;
                             cHandLeftOnTorso   = 0;
                         }
+                #endregion
+                #endregion
+
+                #region GO_HOME
+                    #region GO_HOME_RIGHT_HAND
+                        if (cHandRightOnImageHome == 20) 
+                        {
+                            mKinect.Stop();
+                            UI_MainMenu main = new UI_MainMenu();
+                            main.Show();
+                            this.Close();                            
+                        }
+                #endregion
+                    #region GO_HOME_LEFT_HAND
+                        if (cHandLeftOnImageHome == 20) 
+                        {
+                            mKinect.Stop();
+                            UI_MainMenu main = new UI_MainMenu();
+                            main.Show();
+                            this.Close();                            
+                        }
                     #endregion
                 #endregion
+
             }
         }
 
@@ -666,29 +732,5 @@ namespace LBG
                 return distance;
             }
         }
-
-        //dHandOnHead = DateTime.Now;
-        //int minutes = (int) dHandOnHead.Subtract(dHandOnImage).TotalMinutes;
-
-        //Log("Hand On Head - minutes " + minutes.ToString());
-
-        //if (cHandOnHead == 10 && !(minutes < 2)) //Si la mano esta en la cabeza 10 veces y pasaron menos de 2 minutos 
-        //{
-        //    return true;
-        //}
-        //else
-        //{
-        //    return false;
-        //}
-
-        private void btn_back(object sender, RoutedEventArgs e)
-        {
-            mKinect.Stop();
-            Log("GOING BACK");
-            UI_MainMenu main = new UI_MainMenu();
-            main.Show();
-            this.Close();
-        }
-
     }
 }

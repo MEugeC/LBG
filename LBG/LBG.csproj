@@ -91,9 +91,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="KinectController.cs" />
-    <Compile Include="UI_GameOne.xaml.cs">
-      <DependentUpon>UI_GameOne.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -113,10 +110,6 @@
     <Compile Include="UI_MainMenu.xaml.cs">
       <DependentUpon>UI_MainMenu.xaml</DependentUpon>
     </Compile>
-    <Page Include="UI_GameOne.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI_GameSixPieces.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

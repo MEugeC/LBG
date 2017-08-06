@@ -11,9 +11,8 @@ namespace LBG
     /// </summary>
     public partial class UI_MainMenu : Window
     {
-        static KinectSensorChooser miKinect;
-        //para ver si esta conectado, si se esta inicializando, etc... la tabla de todos los estados esta en la web
-        SoundPlayer cheersSound = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\cheers.wav");
+        static KinectSensorChooser mKinect; 
+        SoundPlayer                cheersSound = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\cheers.wav");
 
         public UI_MainMenu()
         {
@@ -25,23 +24,23 @@ namespace LBG
             MainGrid.Height = System.Windows.SystemParameters.PrimaryScreenHeight;
             MainGrid.Width = System.Windows.SystemParameters.PrimaryScreenWidth;
 
-            miKinect = new KinectSensorChooser();
-            miKinect.KinectChanged += miKinect_KinectChanged;
-            //detecta si un kinect se conecta o esta desconectado, etc...
-            // si lo desconectamos nos manda al evento
-            sensorChooserUI.KinectSensorChooser = miKinect;
-            miKinect.Start(); //inicializar el kinect
+            mKinect = new KinectSensorChooser();
+            mKinect.KinectChanged += miKinect_KinectChanged; //Detects if the sensor is connected or not.
+            sensorChooserUI.KinectSensorChooser = mKinect;
+            mKinect.Start(); //Initialize the sensor.
+
+            //Sonido //Audio Comenzando
         }
 
         void miKinect_KinectChanged(object sender, KinectChangedEventArgs e)
         {
-            bool error = true; //verificar si existe algun error
-            if (e.OldSensor == null) //esto va de KinectChangedEventArgs, si es null es que lo desconcectamos
+            bool error = true; 
+            if (e.OldSensor == null) //NULL = disconnected
             {
                 try
                 {
-                    e.OldSensor.DepthStream.Disable(); //desabilitar la profundidad y el esqueleto
-                    e.OldSensor.SkeletonStream.Disable();
+                    e.OldSensor.DepthStream.Disable(); //Disable depth.
+                    e.OldSensor.SkeletonStream.Disable(); //Disable skeleton.
                 }
                 catch (Exception)
                 {
@@ -49,23 +48,22 @@ namespace LBG
                 }
             }
 
-            if (e.NewSensor == null) //verifico si un nuevo kinect se conecto
+            if (e.NewSensor == null) //Check if a sensor is connected.
                 return;
 
-            try //habilitar la profundidad y esqueletos
+            try //Enable the depth and the skeleton.
             {
-                e.NewSensor.DepthStream.Enable(DepthImageFormat.Resolution640x480Fps30);
-                //asigno el formato a la imagen
+                e.NewSensor.DepthStream.Enable(DepthImageFormat.Resolution640x480Fps30); 
                 e.NewSensor.SkeletonStream.Enable();
 
                 try
                 {
-                    e.NewSensor.SkeletonStream.TrackingMode = SkeletonTrackingMode.Seated;
-                    //este modo nos permite estar sentado pero detectar las articulaciones de la parte superior del cuerpo
+                    //Default allows us to detect all joints, Seated only the top 10.
+                    e.NewSensor.SkeletonStream.TrackingMode = SkeletonTrackingMode.Default;
+                    //Closest range only for kinect windows.
                     e.NewSensor.DepthStream.Range = DepthRange.Near;
-                    //para que tenga rango mas cercano solo para kinect windows
+                    //Closest range for the skeleton.
                     e.NewSensor.SkeletonStream.EnableTrackingInNearRange = true;
-                    //para el rango cercano de los esqueletos
                 }
                 catch (InvalidOperationException)
                 {
@@ -79,12 +77,11 @@ namespace LBG
             }
 
             ZonaCursor.KinectSensor = e.NewSensor;
-            //MessageBox.Show("FIN"kkk);//ya tenemos el cursor
         }
 
         private void btn_gameOne(object sender, RoutedEventArgs e)
         {
-            miKinect.Stop();
+            mKinect.Stop();
             UI_GameThreePieces game1 = new UI_GameThreePieces();
             game1.Show();
             this.Close();
@@ -92,7 +89,7 @@ namespace LBG
 
         private void btn_gameTwo(object sender, RoutedEventArgs e)
         {
-            miKinect.Stop();
+            mKinect.Stop();
             UI_GameThreePiecesWithHelp game2 = new UI_GameThreePiecesWithHelp();
             game2.Show();
             this.Close();
@@ -100,7 +97,7 @@ namespace LBG
 
         private void btn_gameThree(object sender, RoutedEventArgs e)
         {
-            miKinect.Stop();
+            mKinect.Stop();
             UI_GameSixPiecesWithHelp game2 = new UI_GameSixPiecesWithHelp();
             game2.Show();
             this.Close();
@@ -108,7 +105,7 @@ namespace LBG
 
         private void btn_gameFour(object sender, RoutedEventArgs e)
         {
-            miKinect.Stop();
+            mKinect.Stop();
             UI_GameSixPieces game2 = new UI_GameSixPieces();
             game2.Show();
             this.Close();

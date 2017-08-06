@@ -12,12 +12,9 @@
         <Canvas Name ="MainCanvas" Width="1312" Margin="0,0,-8,0" >
             <!--<k:KinectRegion Name="ZonaCursor" Margin="10,-10,-10,0" Grid.ColumnSpan="2">-->
             <!--Titles-->
-            <Image x:Name="image1" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\title_gameOne.png" Height="201" HorizontalAlignment="Left" VerticalAlignment="Top" Width="950" Margin="186,0,0,0" />
-            <k:KinectTileButton Click="btn_back" Foreground="{x:Null}" BorderBrush="{x:Null}" Height="115" Width="115" Background="{x:Null}" LabelBackground="{x:Null}" Canvas.Left="35" Canvas.Top="35">
-                <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\home-icon.png" Height="115" Width="115" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </k:KinectTileButton>
-
-            <Image x:Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoyBlack3.png" HorizontalAlignment="Left" Width="425" Height="569" VerticalAlignment="Top" Canvas.Left="475" Canvas.Top="151" />
+            <Image Name="image1" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\title_gameOne.png" Height="201" HorizontalAlignment="Left" VerticalAlignment="Top" Width="950" Margin="186,0,0,0" />
+            <Image Name="imageHome" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\home-icon.png" Height="115" Width="115" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="30" Canvas.Top="30"/>
+            <Image Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoyBlack3.png" HorizontalAlignment="Left" Width="425" Height="569" VerticalAlignment="Top" Canvas.Left="475" Canvas.Top="151" />
 
             <!--Images in space-->
             <Image Name="imageHead" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png"  Canvas.Left="960" Canvas.Top="301" Height="279" Width="281" HorizontalAlignment="Center" VerticalAlignment="Center"/>
