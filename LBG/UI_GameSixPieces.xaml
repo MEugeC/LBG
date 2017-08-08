@@ -11,12 +11,11 @@
     <Grid>
         <Canvas Name ="MainCanvas" Width="1312" Margin="0,0,-8,0" >
             <!--Titles-->
-            <Image x:Name="image1" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\title_gameOne.png" Height="201" HorizontalAlignment="Left" VerticalAlignment="Top" Width="950" Margin="186,0,0,0" />
-            <k:KinectTileButton Click="btn_back" Foreground="{x:Null}" BorderBrush="{x:Null}" Height="115" Width="115" Background="{x:Null}" LabelBackground="{x:Null}" Canvas.Left="35" Canvas.Top="35">
-                <Image Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\home-icon.png" Height="115" Width="115" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </k:KinectTileButton>
+            <Image Name="image1" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\title_gameOne.png" Height="201" HorizontalAlignment="Left" VerticalAlignment="Top" Width="950" Margin="186,0,0,0" />
+            <Image Name="imageHome" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\home-icon.png" Height="75" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="30" Canvas.Top="30"/>
+            <Image Name="imageFinal" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\finish.png" Height="201" HorizontalAlignment="Left" VerticalAlignment="Top" Width="984" Canvas.Left="186" Visibility="Hidden"/>
 
-            <Image x:Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoyBlack6.png" HorizontalAlignment="Left" Width="327" Height="439" VerticalAlignment="Top" Canvas.Left="488" Canvas.Top="201" />
+            <Image Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoyBlack6.png" HorizontalAlignment="Left" Width="327" Height="439" VerticalAlignment="Top" Canvas.Left="488" Canvas.Top="201" />
 
             <!--Images in space-->
             <Image Name ="imageHead" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png" Height="220" Width="222" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="878" Canvas.Top="455" RenderTransformOrigin="-0.554,-0.53"/>
@@ -44,7 +43,6 @@
 
             <!--Joints-->
             <Ellipse Name="ellipseHead" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Black" Visibility="Collapsed"/>
-            <Ellipse Name="ellipseShoulderCenter" Canvas.Left="617" Canvas.Top="34" Height="50"  Width="50" Fill="Red" Visibility="Collapsed"/>
             <Ellipse Name="ellipseSpine" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Blue" Visibility="Collapsed"/>
             <Ellipse Name="ellipseHipCenter" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Green" Visibility="Collapsed"/>
             <Ellipse Name="ellipseKneeRight" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Yellow" Visibility="Hidden"/>
@@ -53,8 +51,6 @@
             <Ellipse Name="ellipseElbowLeft" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Yellow" Visibility="Hidden"/>
             <Ellipse Name="ellipseHipRight" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Green" Visibility="Hidden"/>
             <Ellipse Name="ellipseHipLeft" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Green" Visibility="Hidden"/>
-            <Ellipse Name="ellipseFootRight" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Orange" Visibility="Hidden"/>
-            <Ellipse Name="ellipseFootLeft" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Orange" Visibility="Hidden"/>
 
             <!--Images Hands-->
             <Image Name="ellipseHandLeft" Canvas.Left="517" Canvas.Top="10" Height="100"  Width="100" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\handLeft.png" Visibility="Collapsed" />

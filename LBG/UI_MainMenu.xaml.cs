@@ -12,11 +12,12 @@ namespace LBG
     public partial class UI_MainMenu : Window
     {
         static KinectSensorChooser mKinect; 
-        SoundPlayer                cheersSound = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\cheers.wav");
+        SoundPlayer                mainSound = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\mainMenuSound.wav");
 
         public UI_MainMenu()
         {
             InitializeComponent();
+            mainSound.Play();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -28,8 +29,6 @@ namespace LBG
             mKinect.KinectChanged += miKinect_KinectChanged; //Detects if the sensor is connected or not.
             sensorChooserUI.KinectSensorChooser = mKinect;
             mKinect.Start(); //Initialize the sensor.
-
-            //Sonido //Audio Comenzando
         }
 
         void miKinect_KinectChanged(object sender, KinectChangedEventArgs e)
@@ -82,7 +81,7 @@ namespace LBG
         private void btn_gameOne(object sender, RoutedEventArgs e)
         {
             mKinect.Stop();
-            UI_GameThreePieces game1 = new UI_GameThreePieces();
+            UI_GameThreePiecesWithHelp game1 = new UI_GameThreePiecesWithHelp();
             game1.Show();
             this.Close();
         }
@@ -90,7 +89,7 @@ namespace LBG
         private void btn_gameTwo(object sender, RoutedEventArgs e)
         {
             mKinect.Stop();
-            UI_GameThreePiecesWithHelp game2 = new UI_GameThreePiecesWithHelp();
+            UI_GameThreePieces game2 = new UI_GameThreePieces();
             game2.Show();
             this.Close();
         }

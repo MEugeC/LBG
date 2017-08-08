@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 using System.Linq;
 using System.Media;
 using System.Windows;
@@ -25,21 +26,24 @@ namespace LBG
         int                        cHandRightOnHead       = 0;
         int                        cHandLeftOnImageHead   = 0;
         int                        cHandLeftOnHead        = 0;
-        Boolean                    soundHead              = false;
+        bool                       headOK                 = false;
+
         Boolean                    cDateHead              = false;
 
         int                        cHandRightOnImageTorso = 0;
         int                        cHandLeftOnImageTorso  = 0;
         int                        cHandRightOnTorso      = 0;
         int                        cHandLeftOnTorso       = 0;
-        Boolean                    soundTorso             = false;
+        bool                       torsoOK                 = false;
+
         Boolean                    cDateTorso             = false;
 
         int                        cHandRightOnImageLegs  = 0;
         int                        cHandRightOnLegs       = 0;
         int                        cHandLeftOnImageLegs   = 0;
         int                        cHandLeftOnLegs        = 0;
-        Boolean                    soundLegs              = false;
+        bool                       legsOK                 = false;
+
         Boolean                    cDateLegs              = false;
 
         int                        cHandRightOnImageHome  = 0;
@@ -47,7 +51,12 @@ namespace LBG
 
         DateTime                   dHandOnImage;
 
-        SoundPlayer                cheersSound            = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\cheers.wav");
+        SoundPlayer                headSound              = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\headSound.wav");
+        SoundPlayer                torsoSound             = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\torsoSound.wav");
+        SoundPlayer                legsSound              = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\legsSound.wav");
+        SoundPlayer                cheersSound            = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\cheersSound.wav");
+        SoundPlayer                nextLevelSound         = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\nextLevelSound.wav");
+        SoundPlayer                letsPlaySound          = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\letsPlaySound.wav");
 
 
         [Serializable]
@@ -60,6 +69,7 @@ namespace LBG
         public UI_GameThreePieces()
         {
             InitializeComponent();
+            letsPlaySound.Play();
         }
 
         public static void Log(string logMessage)
@@ -339,41 +349,29 @@ namespace LBG
                 DepthImagePoint headDepthPoint           = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.Head].Position, DepthImageFormat.Resolution640x480Fps30);
                 DepthImagePoint leftHandDepthPoint       = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.HandLeft].Position, DepthImageFormat.Resolution640x480Fps30);
                 DepthImagePoint rightHandDepthPoint      = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.HandRight].Position, DepthImageFormat.Resolution640x480Fps30);
-                DepthImagePoint shoulderCenterDepthPoint = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.ShoulderCenter].Position, DepthImageFormat.Resolution640x480Fps30);
                 DepthImagePoint spineDepthPoint          = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.Spine].Position, DepthImageFormat.Resolution640x480Fps30);
-                DepthImagePoint hipCenterDepthPoint      = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.HipCenter].Position, DepthImageFormat.Resolution640x480Fps30);
                 DepthImagePoint hipRightDepthPoint       = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.HipRight].Position, DepthImageFormat.Resolution640x480Fps30);
                 DepthImagePoint hipLeftDepthPoint        = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.HipLeft].Position, DepthImageFormat.Resolution640x480Fps30);
                 DepthImagePoint kneeRightDepthPoint      = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.KneeRight].Position, DepthImageFormat.Resolution640x480Fps30);
                 DepthImagePoint kneeLeftDepthPoint       = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.KneeLeft].Position, DepthImageFormat.Resolution640x480Fps30);
-                DepthImagePoint footRightDepthPoint      = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.FootRight].Position, DepthImageFormat.Resolution640x480Fps30);
-                DepthImagePoint footLeftDepthPoint       = mKinect.Kinect.CoordinateMapper.MapSkeletonPointToDepthPoint(first.Joints[JointType.FootLeft].Position, DepthImageFormat.Resolution640x480Fps30);
 
                 ColorImagePoint headColorPoint           = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, headDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
                 ColorImagePoint leftHandColorPoint       = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, leftHandDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
                 ColorImagePoint rightHandColorPoint      = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, rightHandDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
-                ColorImagePoint shoulderCenterColorPoint = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, shoulderCenterDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
                 ColorImagePoint spineColorPoint          = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, spineDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
-                ColorImagePoint hipCenterColorPoint      = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, hipCenterDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
                 ColorImagePoint hipRightColorPoint       = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, hipRightDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
                 ColorImagePoint hipLeftColorPoint        = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, hipLeftDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
                 ColorImagePoint kneeRightColorPoint      = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, kneeRightDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
                 ColorImagePoint kneeLeftColorPoint       = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, kneeLeftDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
-                ColorImagePoint footRightColorPoint      = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, footRightDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
-                ColorImagePoint footLeftColorPoint       = mKinect.Kinect.CoordinateMapper.MapDepthPointToColorPoint(DepthImageFormat.Resolution640x480Fps30, footLeftDepthPoint, ColorImageFormat.RgbResolution1280x960Fps12);
 
                 CameraPosition(ellipseHead, headColorPoint, "HEAD");
                 CameraPosition(ellipseHandLeft, leftHandColorPoint, "LEFT HAND");
                 CameraPosition(ellipseHandRight, rightHandColorPoint, "RIGHT HAND");
-                CameraPosition(ellipseShoulderCenter, shoulderCenterColorPoint, "SHOULDER CENTER");
                 CameraPosition(ellipseSpine, spineColorPoint, "SPINE");
-                CameraPosition(ellipseHipCenter, hipCenterColorPoint, "HIP CENTER");
                 CameraPosition(ellipseHipRight, hipRightColorPoint, "HIP RIGHT");
                 CameraPosition(ellipseHipLeft, hipLeftColorPoint, "HIP LEFT");
                 CameraPosition(ellipseKneeRight, kneeRightColorPoint, "KNEE RIGHT");
                 CameraPosition(ellipseKneeLeft, kneeLeftColorPoint, "KNEE LEFT");
-                CameraPosition(ellipseFootRight, footRightColorPoint, "FOOT RIGHT");
-                CameraPosition(ellipseFootLeft, footLeftColorPoint, "FOOT RIGHT");
 
                 #region HEAD
                     #region HEAD_HAND_RIGHT
@@ -382,36 +380,31 @@ namespace LBG
                         {
                             CameraPosition(ellipseHead, headColorPoint, "HEAD - cHandRightOnImageHead");
                             CameraPosition(ellipseHandRight, rightHandColorPoint, "RIGHT HAND - cHandRightOnImageHead");
-                            soundHead = true;
+                            headSound.Play();
                         }
 
-                        if (cHandRightOnImageHead >= 10 && soundHead)
-                        {
-                            dHandOnImage = DateTime.Now;
-                            // headSound.play(); Play HEAD Sound
-                        }
+                        //if (cHandRightOnImageHead >= 10 && ((DateTime.Now - dHandOnImage).Minutes >= 2) && !cDateHead)
+                        //{
+                        //    // headSound.play(); Play HEAD Sound
+                        //    cheersSound.Play();
+                        //    cDateHead = true;
+                        //}     
 
-                        if (cHandRightOnImageHead >= 10 && ((DateTime.Now - dHandOnImage).Minutes >= 2) && !cDateHead)
-                        {
-                            // headSound.play(); Play HEAD Sound
-                            cDateHead = true;
-                        }     
-                               
                         if (handOnImage(ellipseHandRight, ellipseHead) && cHandRightOnImageHead >= 10)
                         {
                             cHandRightOnHead++;
-                            labelResult.Content = "++: " + cHandRightOnHead;
+                            //labelResult.Content = "++: " + cHandRightOnHead;
                         }
 
                         if (cHandRightOnHead == 5)
                         {
-                            labelResult2.Content = "BIEN";
-                            labelResult2.Visibility = Visibility.Visible;
+                            //labelResult2.Content = "BIEN";
+                            //labelResult2.Visibility = Visibility.Visible;
 
                             Canvas.SetLeft(imageHead, 540);
                             Canvas.SetTop(imageHead, 151);
                             cheersSound.Play();
-
+                            headOK = true;
                             cHandRightOnHead  = 0;
                             cHandLeftOnHead   = 0;
                             cHandRightOnTorso = 0; 
@@ -422,48 +415,38 @@ namespace LBG
                     #endregion
 
                     #region HEAD_LEFT_HAND
-                    if (cHandLeftOnImageHead == 10) 
-                    {
-                        dHandOnImage = DateTime.Now;
-                        CameraPosition(ellipseHead, headColorPoint, "HEAD - cHandRightOnImageHead");
-                        CameraPosition(ellipseHandLeft, leftHandColorPoint, "RIGHT HAND - cHandRightOnImageHead");
+                        if (cHandLeftOnImageHead == 10) 
+                        {
+                            dHandOnImage = DateTime.Now;
+                            CameraPosition(ellipseHead, headColorPoint, "HEAD - cHandRightOnImageHead");
+                            CameraPosition(ellipseHandLeft, leftHandColorPoint, "RIGHT HAND - cHandRightOnImageHead");
+                            headSound.Play();
+                        }
 
-                        cHandRightOnImageHead  = 0;
-                        cHandRightOnImageLegs  = 0;
-                        cHandLeftOnImageLegs   = 0;
-                        cHandRightOnImageTorso = 0;
-                        cHandLeftOnImageTorso  = 0; 
-                    }
+                        if (handOnImage(ellipseHandLeft, ellipseHead) && cHandLeftOnImageHead >= 10)
+                        {
+                            cHandLeftOnHead++;
+                            //labelResult.Content = "++: " + cHandLeftOnHead;
+                            //labelResult.Visibility = Visibility.Visible;
+                        }
 
-                    if (handOnImage(ellipseHandLeft, ellipseHead) && cHandLeftOnImageHead >= 10)
-                    {
-                        cHandLeftOnHead++;
-                        labelResult.Content = "++: " + cHandLeftOnHead;
-                        labelResult.Visibility = Visibility.Visible;
+                        if (cHandLeftOnHead == 5)
+                        {
+                            //labelResult2.Content = "BIEN";
+                            //labelResult2.Visibility = Visibility.Visible;
+                            Canvas.SetLeft(imageHead, 540);
+                            Canvas.SetTop(imageHead, 151);
+                            cheersSound.Play();
+                            headOK = true;
 
-                        cHandRightOnHead  = 0;
-                        cHandRightOnTorso = 0; 
-                        cHandLeftOnTorso  = 0;
-                        cHandRightOnLegs  = 0;
-                        cHandLeftOnLegs   = 0;
-                    }
-
-                    if (cHandLeftOnHead == 5)
-                    {
-                        labelResult2.Content = "BIEN";
-                        labelResult2.Visibility = Visibility.Visible;
-                        Canvas.SetLeft(imageHead, 540);
-                        Canvas.SetTop(imageHead, 151);
-                        cheersSound.Play();
-
-                        cHandLeftOnHead   = 0;
-                        cHandRightOnHead  = 0;
-                        cHandRightOnTorso = 0; 
-                        cHandLeftOnTorso  = 0;
-                        cHandRightOnLegs  = 0;
-                        cHandLeftOnLegs   = 0;
-                    }
-                #endregion
+                            cHandLeftOnHead   = 0;
+                            cHandRightOnHead  = 0;
+                            cHandRightOnTorso = 0; 
+                            cHandLeftOnTorso  = 0;
+                            cHandRightOnLegs  = 0;
+                            cHandLeftOnLegs   = 0;
+                        }
+                    #endregion
                 #endregion
 
                 #region TORSO
@@ -473,36 +456,25 @@ namespace LBG
                         dHandOnImage = DateTime.Now;
                         CameraPosition(ellipseHandLeft, rightHandColorPoint, "RIGHT HAND - cHandRightOnImageHead");
                         CameraPosition(ellipseSpine, spineColorPoint, "SPINE");;
-
-                        cHandLeftOnImageTorso = 0;
-                        cHandRightOnImageHead = 0;
-                        cHandLeftOnImageHead  = 0;
-                        cHandRightOnImageLegs = 0;
-                        cHandLeftOnImageLegs  = 0;
+                        torsoSound.Play();
                     }
 
                     if (handOnImage(ellipseHandRight, ellipseSpine) && cHandRightOnImageTorso >= 10)
                     {
                         cHandRightOnTorso++;
-                        labelResult.Content = "++: " + cHandRightOnTorso;
-                        labelResult.Visibility = Visibility.Visible;
-
-                        cHandLeftOnTorso = 0;
-                        cHandRightOnHead = 0;
-                        cHandLeftOnHead  = 0;
-                        cHandRightOnLegs = 0;
-                        cHandLeftOnLegs  = 0;
+                        //labelResult.Content = "++: " + cHandRightOnTorso;
+                        //labelResult.Visibility = Visibility.Visible;
                     }
 
                     if (cHandRightOnTorso == 5)
                     {
-                        labelResult2.Content = "BIEN";
-                        labelResult2.Visibility = Visibility.Visible;
+                        //labelResult2.Content = "BIEN";
+                        //labelResult2.Visibility = Visibility.Visible;
 
                         Canvas.SetLeft(imageTorso, 473);
                         Canvas.SetTop(imageTorso, 324);
                         cheersSound.Play();
-
+                        torsoOK = true;
                         cHandRightOnTorso = 0;
                         cHandLeftOnTorso = 0;
                         cHandRightOnHead = 0;
@@ -518,35 +490,24 @@ namespace LBG
                             dHandOnImage = DateTime.Now;
                             CameraPosition(ellipseHandLeft, leftHandColorPoint, "RIGHT HAND - cHandRightOnImageHead");
                             CameraPosition(ellipseSpine, spineColorPoint, "SPINE");
-
-                            cHandRightOnImageTorso = 0;
-                            cHandRightOnImageHead  = 0;
-                            cHandLeftOnImageHead   = 0;
-                            cHandRightOnImageLegs  = 0;
-                            cHandLeftOnImageLegs   = 0;
+                            torsoSound.Play();
                         }
 
                         if (handOnImage(ellipseHandLeft, ellipseSpine) && cHandLeftOnImageTorso >= 10)
                         {
                             cHandLeftOnTorso++;
-                            labelResult.Content = "++: " + cHandLeftOnTorso;
-                            labelResult.Visibility = Visibility.Visible;
-
-                            cHandRightOnTorso = 0;
-                            cHandRightOnHead  = 0;
-                            cHandLeftOnHead   = 0;
-                            cHandRightOnLegs  = 0;
-                            cHandLeftOnLegs   = 0;
+                            //labelResult.Content = "++: " + cHandLeftOnTorso;
+                            //labelResult.Visibility = Visibility.Visible;
                         }
 
                         if (cHandLeftOnTorso == 5)
                         {
-                            labelResult2.Content = "BIEN";
-                            labelResult2.Visibility = Visibility.Visible;
+                            //labelResult2.Content = "BIEN";
+                            //labelResult2.Visibility = Visibility.Visible;
                             Canvas.SetLeft(imageTorso, 473);
                             Canvas.SetTop(imageTorso, 324);
                             cheersSound.Play();
-
+                            torsoOK = true;
                             cHandLeftOnTorso  = 0;
                             cHandRightOnTorso = 0;
                             cHandRightOnHead  = 0;
@@ -568,12 +529,7 @@ namespace LBG
                             CameraPosition(ellipseHipLeft, hipLeftColorPoint, "HIP LEFT");
                             CameraPosition(ellipseKneeRight, kneeRightColorPoint, "KNEE RIGHT");
                             CameraPosition(ellipseKneeLeft, kneeLeftColorPoint, "KNEE LEFT");
-
-                            cHandLeftOnImageLegs   = 0;
-                            cHandRightOnImageHead  = 0;
-                            cHandLeftOnImageHead   = 0;
-                            cHandRightOnImageTorso = 0;
-                            cHandLeftOnImageTorso  = 0;
+                            legsSound.Play();
                         }
 
                         if ((handOnImage(ellipseHandRight, ellipseHipRight) ||
@@ -582,24 +538,19 @@ namespace LBG
                             handOnImage(ellipseHandRight, ellipseKneeLeft)) && cHandRightOnImageLegs >= 10)
                         {
                             cHandRightOnLegs++;
-                            labelResult.Content = "++: " + cHandRightOnLegs;
-                            labelResult.Visibility = Visibility.Visible;
+                            //labelResult.Content = "++: " + cHandRightOnLegs;
+                            //labelResult.Visibility = Visibility.Visible;
 
-                            cHandLeftOnLegs    = 0;
-                            cHandRightOnHead   = 0;
-                            cHandLeftOnHead    = 0;
-                            cHandRightOnTorso  = 0;
-                            cHandLeftOnTorso   = 0;
                         }
 
                         if (cHandRightOnLegs == 5)
                         {
-                            labelResult2.Content = "BIEN";
-                            labelResult2.Visibility = Visibility.Visible;
+                            //labelResult2.Content = "BIEN";
+                            //labelResult2.Visibility = Visibility.Visible;
                             Canvas.SetLeft(imageLegs,523);
                             Canvas.SetTop(imageLegs,580);
                             cheersSound.Play();
-
+                            legsOK = true;
                             cHandRightOnLegs   = 0;
                             cHandLeftOnLegs    = 0;
                             cHandRightOnHead   = 0;
@@ -617,12 +568,7 @@ namespace LBG
                             CameraPosition(ellipseHipLeft, hipLeftColorPoint, "HIP LEFT");
                             CameraPosition(ellipseKneeRight, kneeRightColorPoint, "KNEE RIGHT");
                             CameraPosition(ellipseKneeLeft, kneeLeftColorPoint, "KNEE LEFT");
-
-                            cHandRightOnImageLegs  = 0;
-                            cHandRightOnImageHead  = 0;
-                            cHandLeftOnImageHead   = 0;
-                            cHandRightOnImageTorso = 0;
-                            cHandLeftOnImageTorso  = 0;
+                            legsSound.Play();
                         }
 
                         if ((handOnImage(ellipseHandLeft, ellipseHipRight) ||
@@ -631,24 +577,18 @@ namespace LBG
                             handOnImage(ellipseHandLeft, ellipseKneeLeft)) && cHandLeftOnImageLegs >= 10)
                         {
                             cHandLeftOnLegs++;
-                            labelResult.Content = "++: " + cHandLeftOnLegs;
-                            labelResult.Visibility = Visibility.Visible;
-
-                            cHandRightOnLegs   = 0;
-                            cHandRightOnHead   = 0;
-                            cHandLeftOnHead    = 0;
-                            cHandRightOnTorso  = 0;
-                            cHandLeftOnTorso   = 0;
+                            //labelResult.Content = "++: " + cHandLeftOnLegs;
+                            //labelResult.Visibility = Visibility.Visible;
                         }
 
                         if (cHandLeftOnLegs == 5)
                         {
-                            labelResult2.Content = "BIEN";
-                            labelResult2.Visibility = Visibility.Visible;
+                            //labelResult2.Content = "BIEN";
+                            //labelResult2.Visibility = Visibility.Visible;
                             Canvas.SetLeft(imageLegs,523);
                             Canvas.SetTop(imageLegs,580);
                             cheersSound.Play();       
-                            
+                            legsOK = true;
                             cHandLeftOnLegs    = 0;                     
                             cHandRightOnLegs   = 0;
                             cHandRightOnHead   = 0;
@@ -661,7 +601,7 @@ namespace LBG
 
                 #region GO_HOME
                     #region GO_HOME_RIGHT_HAND
-                        if (cHandRightOnImageHome == 20) 
+                        if (cHandRightOnImageHome == 10) 
                         {
                             mKinect.Stop();
                             UI_MainMenu main = new UI_MainMenu();
@@ -670,16 +610,29 @@ namespace LBG
                         }
                 #endregion
                     #region GO_HOME_LEFT_HAND
-                        if (cHandLeftOnImageHome == 20) 
+                        if (cHandLeftOnImageHome == 10) 
                         {
                             mKinect.Stop();
                             UI_MainMenu main = new UI_MainMenu();
                             main.Show();
                             this.Close();                            
                         }
-                    #endregion
+                #endregion
                 #endregion
 
+                #region NEXT_LEVEL
+                if (headOK && torsoOK && legsOK)
+                {
+                    imageNext.Visibility = Visibility.Visible;
+                    nextLevelSound.Play();
+                    Thread.Sleep(3000);
+
+                    mKinect.Stop();
+                    UI_GameThreePieces nextLevel = new UI_GameThreePieces();
+                    nextLevel.Show();
+                    this.Close();
+                }
+                #endregion
             }
         }
 

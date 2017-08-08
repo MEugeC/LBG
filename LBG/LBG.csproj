@@ -199,6 +199,24 @@
     <Resource Include="Images\handRight.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Sounds\allGameSound.wav" />
+    <Content Include="Sounds\cheersSound.wav" />
+    <Content Include="Sounds\finishSound.wav" />
+    <Content Include="Sounds\greatSound.wav" />
+    <Content Include="Sounds\headSound.wav" />
+    <Content Include="Sounds\leftHandSound.wav" />
+    <Content Include="Sounds\leftLegSound.wav" />
+    <Content Include="Sounds\legsSound.wav" />
+    <Content Include="Sounds\letsPlay.wav" />
+    <Content Include="Sounds\letsPlaySound.wav" />
+    <Content Include="Sounds\mainMenu.wav" />
+    <Content Include="Sounds\mainMenuSound.wav" />
+    <Content Include="Sounds\nextLevelSound.wav" />
+    <Content Include="Sounds\rightHandSound.wav" />
+    <Content Include="Sounds\rightLegSound.wav" />
+    <Content Include="Sounds\selectAPiece.wav" />
+    <Content Include="Sounds\spineSound.wav" />
+    <Content Include="Sounds\torsoSound.wav" />
     <Resource Include="Images\Buttons\1.png" />
     <Resource Include="Images\Buttons\2.png" />
     <Resource Include="Images\Buttons\3.png" />

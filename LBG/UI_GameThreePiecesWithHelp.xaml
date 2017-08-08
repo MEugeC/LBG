@@ -13,8 +13,9 @@
             <!--<k:KinectRegion Name="ZonaCursor" Margin="10,-10,-10,0" Grid.ColumnSpan="2">-->
             <!--Titles-->
             <Image Name="image1" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\title_gameOne.png" Height="201" HorizontalAlignment="Left" VerticalAlignment="Top" Width="950" Margin="186,0,0,0" />
-            <Image Name="imageHome" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\home-icon.png" Height="115" Width="115" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="30" Canvas.Top="30"/>
+            <Image Name="imageHome" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\home-icon.png" Height="75" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="30" Canvas.Top="30"/>
             <Image Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoyBlack3.png" HorizontalAlignment="Left" Width="425" Height="569" VerticalAlignment="Top" Canvas.Left="475" Canvas.Top="151" />
+            <Image Name="imageNext" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Buttons\2.png" Height="150" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="1086" Canvas.Top="146" Visibility="Hidden"/>
 
             <!--Images in space-->
             <Image Name="imageHead" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png"  Canvas.Left="960" Canvas.Top="301" Height="279" Width="281" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -36,15 +37,12 @@
 
             <!--Joints-->
             <Ellipse Name="ellipseHead" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Black" Visibility="Collapsed"/>
-            <Ellipse Name="ellipseShoulderCenter" Canvas.Left="617" Canvas.Top="34" Height="50"  Width="50" Fill="Red" Visibility="Collapsed"/>
             <Ellipse Name="ellipseSpine" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Blue" Visibility="Collapsed"/>
             <Ellipse Name="ellipseHipCenter" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Green" Visibility="Collapsed"/>
             <Ellipse Name="ellipseKneeRight" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Yellow" Visibility="Hidden"/>
             <Ellipse Name="ellipseKneeLeft" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Yellow" Visibility="Hidden"/>
             <Ellipse Name="ellipseHipRight" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Green" Visibility="Hidden"/>
             <Ellipse Name="ellipseHipLeft" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Green" Visibility="Hidden"/>
-            <Ellipse Name="ellipseFootRight" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Orange" Visibility="Hidden"/>
-            <Ellipse Name="ellipseFootLeft" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Orange" Visibility="Hidden"/>
 
             <!--Images Hands-->
             <Image Name="ellipseHandLeft" Canvas.Left="517" Canvas.Top="10" Height="100"  Width="100" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\handLeft.png" Visibility="Collapsed" />
