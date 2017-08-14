@@ -1,0 +1,49 @@
+﻿<Window x:Class="LBG.UI_GameSixPiecesCopy2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LBG"
+        xmlns:k="http://schemas.microsoft.com/kinect/2013" 
+        mc:Ignorable="d"
+        Title="APRENDEMOS JUGANDO - SEIS PIEZAS" SizeToContent="WidthAndHeight" Height="784" Width="1312" Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        Icon="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\icon.ico">
+    <Grid>
+        <Canvas Name ="MainCanvas" Width="1312" Margin="0,0,-8,0" >
+            <!--Titles-->
+            <Image Name="image1" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\title_gameOne.png" Height="201" HorizontalAlignment="Left" VerticalAlignment="Top" Width="950" Margin="186,0,0,0" />
+            <Image Name="imageHome" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\home-icon.png" Height="75" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="30" Canvas.Top="30"/>
+            <Image Name="imageFinal" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Titles\finish.png" Height="201" HorizontalAlignment="Left" VerticalAlignment="Top" Width="984" Canvas.Left="186" Visibility="Hidden"/>
+
+            <Image Name="image2" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentBoyBlack6.png" HorizontalAlignment="Left" Width="327" Height="439" VerticalAlignment="Top" Canvas.Left="488" Canvas.Top="201" />
+
+            <!--Images in space-->
+            <Image Name ="imageHead" Stretch="UniformToFill" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentHead.png" Height="220" Width="222" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="538" Canvas.Top="199" RenderTransformOrigin="-0.554,-0.53"/>
+            <Image Name ="imageTorsoWithoutHandsRed" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\torsoWithoutHandsRed.png" Height="150" Width="157" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="573" Canvas.Top="399" Visibility="Hidden"/>
+            <Image Name ="imageLeftLeg" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLeftLeg.png" Height="104" Width="144" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="517" Canvas.Top="536"/>
+            <Image Name ="imageRightLegRed" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\rightLegRed.png" Height="118" Width="130" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="647" Canvas.Top="530" RenderTransformOrigin="2.84,2.299" Visibility="Hidden"/>
+            <Image Name ="imageLeftHandRed" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\leftHandRed.png" Height="92" Width="111" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="482" Canvas.Top="337" Visibility="Hidden"/>
+            <Image Name ="imageRightHand" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentRightHand.png" Height="108" Width="101" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="717" Canvas.Top="343"/>
+
+            <!--Images in space-->
+            <Image Name ="imageTorsoWithoutHands" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentTorsoWithoutHands.png" Height="150" Width="157" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="186" Canvas.Top="301"/>
+            <Image Name ="imageRightLeg" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentRightLeg.png" Height="118" Width="130" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="905" Canvas.Top="206" RenderTransformOrigin="2.84,2.299"/>
+            <Image Name ="imageLeftHand" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\Body_Parts\transparentLeftHand.png" Height="92" Width="111" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="1040" Canvas.Top="460"/>
+
+            <!--Joints-->
+            <Ellipse Name="ellipseSpine" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Blue" Visibility="Collapsed"/>
+            <Ellipse Name="ellipseKneeRight" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Yellow" Visibility="Hidden"/>
+            <Ellipse Name="ellipseElbowLeft" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Yellow" Visibility="Hidden"/>
+            <Ellipse Name="ellipseHipRight" Canvas.Left="617" Canvas.Top="34" Height="50" Width="50" Fill="Green" Visibility="Hidden"/>
+
+            <!--Images Hands-->
+            <Image Name="ellipseHandLeft" Canvas.Left="517" Canvas.Top="10" Height="100"  Width="100" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\handLeft.png" Visibility="Collapsed" />
+            <Image Name="ellipseHandRight" Canvas.Left="662" Canvas.Top="10" Height="100" Width="100" Source="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\handRight.png" Visibility="Collapsed"/>
+
+            <k:KinectSensorChooserUI Name="sensorChooserUI" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1" Margin="240,0,651,0"></k:KinectSensorChooserUI>
+        </Canvas>
+        <!--</k:KinectRegion>-->
+
+    </Grid>
+</Window>

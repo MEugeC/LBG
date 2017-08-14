@@ -48,10 +48,10 @@ namespace LBG
         SoundPlayer                headSound              = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\headSound.wav");
         SoundPlayer                torsoSound             = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\torsoSound.wav");
         SoundPlayer                legsSound              = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\legsSound.wav");
-        SoundPlayer                cheersSound            = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\cheersSound.wav");
-        SoundPlayer                nextLevelSound         = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\nextLevelSound.wav");
-        SoundPlayer                letsPlaySound          = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\letsPlaySound.wav");
+        //SoundPlayer                cheersSound            = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\cheersSound.wav");
+        //SoundPlayer                nextLevelSound         = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\nextLevelSound.wav");
 
+        bool soundNext = false; 
         [Serializable]
         public struct Vector2
         {
@@ -62,8 +62,44 @@ namespace LBG
         public UI_GameThreePiecesWithHelp()
         {
             InitializeComponent();
+            SoundPlayer letsPlaySound = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\letsPlaySound.wav");
             letsPlaySound.Play();
         }
+
+        private static UI_GameThreePiecesWithHelp level1;
+        public static UI_GameThreePiecesWithHelp getInstance()
+        {
+            if (level1 == null)
+            {
+                level1 = new UI_GameThreePiecesWithHelp();
+                level1.Show();
+                level1.Activate();
+            }
+            return level1;
+        }
+
+        private static SoundPlayer nextLevelSound;
+        public static SoundPlayer getNextLevelSound()
+        {
+            if (nextLevelSound == null)
+            {
+                nextLevelSound = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\nextLevelSound.wav");
+                nextLevelSound.Play();
+            }
+            return nextLevelSound;
+        }
+
+        private static SoundPlayer cheersSound;
+        public static SoundPlayer getCheersSound()
+        {
+            if (cheersSound == null)
+            {
+                cheersSound = new SoundPlayer(@"D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Sounds\cheersSound.wav");
+                cheersSound.Play();
+            }
+            return cheersSound;
+        }
+
 
         public static void Log(string logMessage)
         {
@@ -181,15 +217,12 @@ namespace LBG
             #region HEAD_IMAGE
                 //RIGHT HAND to the HEAD (image)
                 if (handOnImage(imageHead, ellipseHandRight) && 
-                    Canvas.GetLeft(imageHead) == 960 && 
-                    Canvas.GetTop(imageHead) == 301) 
+                    Canvas.GetLeft(imageHead) == 993 && 
+                    Canvas.GetTop(imageHead) == 296) 
                 {
                     cHandRightOnImageHead++;
 
                     Log("cHandRightOnImageHead: " + cHandRightOnImageHead.ToString());
-                    labelCHandRight.Content = cHandRightOnImageHead.ToString();
-                    labelHandRight.Visibility = Visibility.Visible;
-                    labelCHandRight.Visibility = Visibility.Visible;
 
                     cHandLeftOnImageHead   = 0;
                     cHandRightOnImageLegs  = 0;
@@ -200,15 +233,12 @@ namespace LBG
 
                 //LEFT HAND to the HEAD (image)
                 if (handOnImage(imageHead, ellipseHandLeft) && 
-                    Canvas.GetLeft(imageHead) == 960 && 
-                    Canvas.GetTop(imageHead) == 301) 
+                    Canvas.GetLeft(imageHead) == 993 && 
+                    Canvas.GetTop(imageHead) == 296) 
                 {
                     cHandLeftOnImageHead++;
 
                     Log("cHandLeftOnImageHead" + cHandLeftOnImageHead.ToString());
-                    labelCHandLeft.Content = cHandLeftOnImageHead.ToString();
-                    labelHandLeft.Visibility = Visibility.Visible;
-                    labelCHandLeft.Visibility = Visibility.Visible;
 
                     cHandRightOnImageHead  = 0;
                     cHandRightOnImageLegs  = 0;
@@ -221,15 +251,12 @@ namespace LBG
             #region TORSO_IMAGE
                 //RIGHT HAND to the TORSO (image)
                 if (handOnImage(imageTorso, ellipseHandRight) && 
-                    Canvas.GetLeft(imageTorso) == 64 && 
+                    Canvas.GetLeft(imageTorso) == 160 && 
                     Canvas.GetTop(imageTorso) == 420) 
                 {
                     cHandRightOnImageTorso++;
 
                     Log("cHandRightOnImageTorso: " + cHandRightOnImageTorso.ToString());
-                    labelCHandRight.Content = cHandRightOnImageTorso.ToString();
-                    labelHandRight.Visibility = Visibility.Visible;
-                    labelCHandRight.Visibility = Visibility.Visible;
 
                     cHandLeftOnImageTorso = 0;
                     cHandRightOnImageHead = 0;
@@ -240,15 +267,12 @@ namespace LBG
 
                 //LEFT HAND to the TORSO (image)
                 if (handOnImage(imageTorso, ellipseHandLeft) && 
-                    Canvas.GetLeft(imageTorso) == 64 && 
+                    Canvas.GetLeft(imageTorso) == 160 && 
                     Canvas.GetTop(imageTorso) == 420) 
                 {
                     cHandLeftOnImageTorso++;
 
                     Log("cHandLeftOnImageTorso: " + cHandLeftOnImageTorso.ToString());
-                    labelCHandLeft.Content = cHandLeftOnImageTorso.ToString();
-                    labelHandLeft.Visibility = Visibility.Visible;
-                    labelCHandLeft.Visibility = Visibility.Visible;
 
                     cHandRightOnImageTorso = 0;
                     cHandRightOnImageHead  = 0;
@@ -261,15 +285,12 @@ namespace LBG
             #region LEGS_IMAGE
                 //RIGHT HAND to the LEGS (image)
                 if (handOnImage(imageLegs, ellipseHandRight) && 
-                    Canvas.GetLeft(imageLegs) == 92 && 
-                    Canvas.GetTop(imageLegs) == 193) 
+                    Canvas.GetLeft(imageLegs) == 277 && 
+                    Canvas.GetTop(imageLegs) == 178) 
                 {
                     cHandRightOnImageLegs++;
 
                     Log("cHandRightOnImageLegs: " + cHandRightOnImageLegs.ToString());
-                    labelCHandRight.Content = cHandRightOnImageLegs.ToString();
-                    labelHandRight.Visibility = Visibility.Visible;
-                    labelCHandRight.Visibility = Visibility.Visible;
 
                     cHandLeftOnImageLegs   = 0;
                     cHandRightOnImageHead  = 0;
@@ -280,15 +301,12 @@ namespace LBG
 
                 //LEFT HAND to the LEGS (image)
                 if (handOnImage(imageLegs, ellipseHandLeft) && 
-                    Canvas.GetLeft(imageLegs) == 50 && 
-                    Canvas.GetTop(imageLegs) == 206) 
+                    Canvas.GetLeft(imageLegs) == 277 && 
+                    Canvas.GetTop(imageLegs) == 178) 
                 {
                     cHandLeftOnImageLegs++;
 
                     Log("cHandLeftOnImageLegs: " + cHandLeftOnImageLegs.ToString());
-                    labelCHandLeft.Content = cHandLeftOnImageLegs.ToString();
-                    labelHandLeft.Visibility = Visibility.Visible;
-                    labelCHandLeft.Visibility = Visibility.Visible;
 
                     cHandRightOnImageLegs  = 0;
                     cHandRightOnImageHead  = 0;
@@ -324,7 +342,7 @@ namespace LBG
                     cHandRightOnImageTorso = 0;
                     cHandLeftOnImageTorso  = 0;
                     cHandRightOnImageHead  = 0;
-                    cHandRightOnImageHome   = 0;
+                    cHandRightOnImageHome  = 0;
                 }
             #endregion
 
@@ -368,7 +386,7 @@ namespace LBG
 
                 #region HEAD
                     #region HEAD_HAND_RIGHT
-                        if (cHandRightOnImageHead == 10) //MANO DERECHA PASO 10 VECES
+                        if (cHandRightOnImageHead == 5) //MANO DERECHA PASO 10 VECES
                         {
                             dHandOnImage = DateTime.Now;
                             CameraPosition(ellipseHead, headColorPoint, "HEAD - cHandRightOnImageHead");
@@ -378,7 +396,7 @@ namespace LBG
                             headSound.Play();
                         }
 
-                        if (handOnImage(ellipseHandRight, ellipseHead) && cHandRightOnImageHead >= 10)
+                        if (handOnImage(ellipseHandRight, ellipseHead) && cHandRightOnImageHead >= 5)
                         {
                             cHandRightOnHead++;
                             //labelResult.Content = "++: " + cHandRightOnHead;
@@ -388,11 +406,11 @@ namespace LBG
                         {
                             //labelResult2.Content = "BIEN";
                             //labelResult2.Visibility = Visibility.Visible;
-                            Canvas.SetLeft(imageHead, 540);
-                            Canvas.SetTop(imageHead, 151);
+                            Canvas.SetLeft(imageHead, 591);
+                            Canvas.SetTop(imageHead, 193);
                             imageHeadInBodyHelp.Visibility = Visibility.Hidden;
 
-                            cheersSound.Play();
+                            getCheersSound();
                             headOK = true;
 
                             cHandRightOnHead  = 0;
@@ -404,7 +422,7 @@ namespace LBG
                         }
                     #endregion
                     #region HEAD_LEFT_HAND
-                        if (cHandLeftOnImageHead == 10) //MANO DERECHA PASO 10 VECES
+                        if (cHandLeftOnImageHead == 5) //MANO DERECHA PASO 10 VECES
                         {
                             dHandOnImage = DateTime.Now;
                             CameraPosition(ellipseHead, headColorPoint, "HEAD - cHandRightOnImageHead");
@@ -414,7 +432,7 @@ namespace LBG
                             headSound.Play();
                         }
 
-                        if (handOnImage(ellipseHandLeft, ellipseHead) && cHandLeftOnImageHead >= 10)
+                        if (handOnImage(ellipseHandLeft, ellipseHead) && cHandLeftOnImageHead >= 5)
                         {
                             cHandLeftOnHead++;
                             //labelResult.Content = "++: " + cHandLeftOnHead;
@@ -426,11 +444,11 @@ namespace LBG
                             //labelResult2.Content = "BIEN";
                             //labelResult2.Visibility = Visibility.Visible;
 
-                            Canvas.SetLeft(imageHead, 540);
-                            Canvas.SetTop(imageHead, 151);
+                            Canvas.SetLeft(imageHead, 591);
+                            Canvas.SetTop(imageHead, 193);
                             imageHeadInBodyHelp.Visibility = Visibility.Hidden;
 
-                            cheersSound.Play();
+                            getCheersSound();
                             headOK = true;
 
                             cHandLeftOnHead   = 0;
@@ -445,7 +463,7 @@ namespace LBG
 
                 #region TORSO
                     #region TORSO_RIGHT_HAND
-                        if (cHandRightOnImageTorso == 10) //MANO DERECHA PASO 10 VECES
+                        if (cHandRightOnImageTorso == 5) //MANO DERECHA PASO 10 VECES
                         {
                             dHandOnImage = DateTime.Now;
                             CameraPosition(ellipseHandLeft, rightHandColorPoint, "RIGHT HAND - cHandRightOnImageHead");
@@ -455,23 +473,18 @@ namespace LBG
                             torsoSound.Play();
                         }
 
-                        if (handOnImage(ellipseHandRight, ellipseSpine) && cHandRightOnImageTorso >= 10)
+                        if (handOnImage(ellipseHandRight, ellipseSpine) && cHandRightOnImageTorso >= 5)
                         {
                             cHandRightOnTorso++;
-                            //labelResult.Content = "++: " + cHandRightOnTorso;
-                            //labelResult.Visibility = Visibility.Visible;
                         }
 
                         if (cHandRightOnTorso == 5)
                         {
-                            //labelResult2.Content = "BIEN";
-                            //labelResult2.Visibility = Visibility.Visible;
-
-                            Canvas.SetLeft(imageTorso, 473);
-                            Canvas.SetTop(imageTorso, 324);
+                            Canvas.SetLeft(imageTorso, 540);
+                            Canvas.SetTop(imageTorso, 328);
                             imageTorsoInBodyHelp.Visibility = Visibility.Hidden;
   
-                            cheersSound.Play();
+                            getCheersSound();
                             torsoOK = true;
 
                             cHandRightOnTorso = 0;
@@ -483,7 +496,7 @@ namespace LBG
                         }
                     #endregion
                     #region TORSO_LEFT_HAND
-                        if (cHandLeftOnImageTorso == 10) //MANO IZQUIERDA PASO 10 VECES
+                        if (cHandLeftOnImageTorso == 5) //MANO IZQUIERDA PASO 10 VECES
                         {
                             dHandOnImage = DateTime.Now;
                             CameraPosition(ellipseHandLeft, leftHandColorPoint, "RIGHT HAND - cHandRightOnImageHead");
@@ -493,23 +506,17 @@ namespace LBG
                             torsoSound.Play();
                         }
 
-                        if (handOnImage(ellipseHandLeft, ellipseSpine) && cHandLeftOnImageTorso >= 10)
+                        if (handOnImage(ellipseHandLeft, ellipseSpine) && cHandLeftOnImageTorso >= 5)
                         {
                             cHandLeftOnTorso++;
-                            //labelResult.Content = "++: " + cHandLeftOnTorso;
-                            //labelResult.Visibility = Visibility.Visible;
-
                         }
 
                         if (cHandLeftOnTorso == 5)
                         {
-                            labelResult2.Content = "BIEN";
-                            labelResult2.Visibility = Visibility.Visible;
-
-                            Canvas.SetLeft(imageTorso, 473);
-                            Canvas.SetTop(imageTorso, 324);
+                            Canvas.SetLeft(imageTorso, 540);
+                            Canvas.SetTop(imageTorso, 328);
                             imageTorsoInBodyHelp.Visibility = Visibility.Hidden;
-                            cheersSound.Play();
+                            getCheersSound();
                             torsoOK = true;
 
                             cHandLeftOnTorso  = 0;
@@ -524,7 +531,7 @@ namespace LBG
 
                 #region LEGS
                     #region LEGS_RIGHT_HAND
-                        if (cHandRightOnImageLegs == 10) //MANO DERECHA PASO 10 VECES
+                        if (cHandRightOnImageLegs == 5) //MANO DERECHA PASO 10 VECES
                         {
                             dHandOnImage = DateTime.Now;
                             CameraPosition(ellipseHandLeft, rightHandColorPoint, "RIGHT HAND - cHandRightOnImageHead");
@@ -541,22 +548,18 @@ namespace LBG
                             handOnImage(ellipseHandRight, ellipseHipLeft) ||
                             handOnImage(ellipseHandRight, ellipseKneeRight) ||
                             handOnImage(ellipseHandRight, ellipseKneeLeft)) && 
-                            cHandRightOnImageLegs >= 10)
+                            cHandRightOnImageLegs >= 5)
                         {
                             cHandRightOnLegs++;
-                            //labelResult.Content = "++: " + cHandRightOnLegs;
-                            //labelResult.Visibility = Visibility.Visible;
                         }
 
                         if (cHandRightOnLegs == 5)
                         {
-                            //labelResult2.Content = "BIEN";
-                            //labelResult2.Visibility = Visibility.Visible;
-                            Canvas.SetLeft(imageLegs, 523);
-                            Canvas.SetTop(imageLegs, 580);
+                            Canvas.SetLeft(imageLegs, 573);
+                            Canvas.SetTop(imageLegs, 523);
                             imageLegsInBodyHelp.Visibility = Visibility.Hidden;
 
-                            cheersSound.Play();
+                            getCheersSound();
                             legsOK = true;
 
                             cHandRightOnLegs  = 0;
@@ -568,7 +571,7 @@ namespace LBG
                         }
                     #endregion
                     #region LEGS_LEFT_HAND
-                        if (cHandLeftOnImageLegs == 10) //MANO IZQUIERDA PASO 10 VECES
+                        if (cHandLeftOnImageLegs == 5) //MANO IZQUIERDA PASO 10 VECES
                         {
                             dHandOnImage = DateTime.Now;
                             CameraPosition(ellipseHandLeft, leftHandColorPoint, "RIGHT HAND - cHandRightOnImageHead");
@@ -585,21 +588,17 @@ namespace LBG
                             handOnImage(ellipseHandLeft, ellipseHipLeft) ||
                             handOnImage(ellipseHandLeft, ellipseKneeRight) ||
                             handOnImage(ellipseHandLeft, ellipseKneeLeft)) 
-                            && cHandLeftOnImageLegs >= 10)
+                            && cHandLeftOnImageLegs >= 5)
                         {
                             cHandLeftOnLegs++;
-                            //labelResult.Content = "++: " + cHandLeftOnLegs;
-                            //labelResult.Visibility = Visibility.Visible;
                         }
 
                         if (cHandLeftOnLegs == 5)
                         {
-                            //labelResult2.Content = "BIEN";
-                            //labelResult2.Visibility = Visibility.Visible;
-                            Canvas.SetLeft(imageLegs, 523);
-                            Canvas.SetTop(imageLegs, 580);
+                            Canvas.SetLeft(imageLegs, 573);
+                            Canvas.SetTop(imageLegs, 523);
                             imageLegsInBodyHelp.Visibility = Visibility.Hidden;
-                            cheersSound.Play();
+                            getCheersSound();
                             legsOK = true;
 
                             cHandLeftOnLegs   = 0;
@@ -634,18 +633,31 @@ namespace LBG
                 #endregion
 
                 #region NEXT_LEVEL
-                    if(headOK && torsoOK && legsOK)
-                    {
-                        imageNext.Visibility = Visibility.Visible;
-                        nextLevelSound.Play();
-                        Thread.Sleep(3000);
+                if (headOK && torsoOK && legsOK)
+                {
+                    ellipseHandLeft.Visibility = Visibility.Hidden;
+                    ellipseHandRight.Visibility = Visibility.Hidden;
+                    Canvas.SetLeft(imageHead, 591);
+                    Canvas.SetTop(imageHead, 193);
+                    Canvas.SetLeft(imageLegs, 573);
+                    Canvas.SetTop(imageLegs, 523);
+                    Canvas.SetLeft(imageTorso, 540);
+                    Canvas.SetTop(imageTorso, 328);
 
-                        mKinect.Stop();
-                        UI_GameThreePieces nextLevel = new UI_GameThreePieces();
-                        nextLevel.Show();
-                        this.Close();
-                    }
+                    imageNext.Visibility = Visibility.Visible;
+                    soundNext = true;
+
+                }
                 #endregion
+
+                if (soundNext)
+                {
+                    Thread.Sleep(3000);
+                    mKinect.Stop();
+                    getNextLevelSound();
+                    UI_GameThreePieces nextLevel = UI_GameThreePieces.getInstance();
+                    this.Close();
+                }
             }
         }
 

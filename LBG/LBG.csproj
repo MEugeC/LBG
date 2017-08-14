@@ -95,6 +95,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UI_GameSixPiecesCopy2.xaml.cs">
+      <DependentUpon>UI_GameSixPiecesCopy2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI_GameSixPiecesCopy.xaml.cs">
+      <DependentUpon>UI_GameSixPiecesCopy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI_GameSixPieces.xaml.cs">
       <DependentUpon>UI_GameSixPieces.xaml</DependentUpon>
     </Compile>
@@ -110,6 +116,14 @@
     <Compile Include="UI_MainMenu.xaml.cs">
       <DependentUpon>UI_MainMenu.xaml</DependentUpon>
     </Compile>
+    <Page Include="UI_GameSixPiecesCopy2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI_GameSixPiecesCopy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI_GameSixPieces.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -199,6 +213,8 @@
     <Resource Include="Images\handRight.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\home-icon.png" />
+    <Resource Include="Images\icon.ico" />
     <Content Include="Sounds\allGameSound.wav" />
     <Content Include="Sounds\cheersSound.wav" />
     <Content Include="Sounds\finishSound.wav" />
@@ -226,7 +242,6 @@
     <Resource Include="Images\Body_Parts\transparentHead.png" />
     <Resource Include="Images\Body_Parts\transparentLegs.png" />
     <Resource Include="Images\Body_Parts\transparentTorso.png" />
-    <Resource Include="Images\home-icon.png" />
     <Resource Include="Images\Body_Parts\transparentLeftHand.png" />
     <Resource Include="Images\Body_Parts\transparentLeftLeg.png" />
     <Resource Include="Images\Body_Parts\transparentRightHand.png" />

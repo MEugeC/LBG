@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:LBG"
         xmlns:k="http://schemas.microsoft.com/kinect/2013" 
         mc:Ignorable="d"
-        Title="UI_GameSixPieces" SizeToContent="WidthAndHeight" Height="784" Width="1312" Loaded="Window_Loaded"
-        WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        Title="APRENDEMOS JUGANDO - SEIS PIEZAS" SizeToContent="WidthAndHeight" Height="784" Width="1312" Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        Icon="D:\Documents\Visual Studio 2015\Projects\LBG\LBG\Images\icon.ico">
     <Grid>
         <Canvas Name ="MainCanvas" Width="1312" Margin="0,0,-8,0" >
             <!--Titles-->

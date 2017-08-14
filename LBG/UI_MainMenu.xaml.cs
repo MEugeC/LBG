@@ -20,6 +20,18 @@ namespace LBG
             mainSound.Play();
         }
 
+        private static UI_MainMenu main;
+        public static UI_MainMenu getInstance()
+        {
+            if (main == null)
+            {
+                main = new UI_MainMenu();
+                main.Show();
+                main.Activate();
+            }
+            return main;
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             MainGrid.Height = System.Windows.SystemParameters.PrimaryScreenHeight;

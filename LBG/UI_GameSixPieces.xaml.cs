@@ -83,6 +83,18 @@ namespace LBG
             letsPlaySound.Play();
         }
 
+        private static UI_GameSixPieces level2;
+        public static UI_GameSixPieces getInstance()
+        {
+            if (level2 == null)
+            {
+                level2 = new UI_GameSixPieces();
+                level2.Show();
+                level2.Activate();
+            }
+            return level2;
+        }
+
         public static void Log(string logMessage)
         {
             StreamWriter log;
